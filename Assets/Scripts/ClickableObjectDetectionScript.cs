@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ClickableObjectDetectionScript : MonoBehaviour
+{
+    private GameObject[] clickableGameObjectsArray;
+
+    private void Awake()
+    {
+        clickableGameObjectsArray = GameObject.FindGameObjectsWithTag("Clickable");
+
+        for (int i = 0; i < clickableGameObjectsArray.Length; i++)
+        {
+            Debug.Log("Clickable Object: " + clickableGameObjectsArray[i].gameObject.name);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (CheckIfClickWasOnClickableObject(out RaycastHit raycastHit) != null)
+            {
+                //update later after pitch
+                raycastHit.transform.gameObject.GetComponent<LongWallObjectScript>().HandleClick();
+            }
+        }
+    }
+
+    private GameObject CheckIfClickWasOnClickableObject(out RaycastHit raycastHit)
+    {
+        GameObject potentiallyClickableObject = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast (ray.origin, ray.direction * 10, out raycastHit))
+        {
+            if (raycastHit.transform.gameObject.tag == "Clickable")
+            {
+                potentiallyClickableObject = raycastHit.transform.gameObject;
+            }
+        }
+
+        return potentiallyClickableObject;
+    }
+}
