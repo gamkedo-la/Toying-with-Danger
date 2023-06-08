@@ -86,7 +86,7 @@ public class LongWallObjectScript : MonoBehaviour
         {
             if (highlighted)
             {
-                PushBackFullyBlockedEnemies();
+                //PushBackFullyBlockedEnemies();
 
                 MoveWallForward();
             }              
