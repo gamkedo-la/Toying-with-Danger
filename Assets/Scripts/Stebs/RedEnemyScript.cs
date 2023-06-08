@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class RedEnemyScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class RedEnemyScript : MonoBehaviour
     public bool fullyBlocked = false;
 
     private GameObject mySpawnPoint;
+
+    [SerializeField] TextMeshProUGUI winLoseTextmeshProUGUI; 
 
     private void Awake()
     {
@@ -35,7 +38,8 @@ public class RedEnemyScript : MonoBehaviour
     {
         if (CheckForSuccessfulInvasion() == true)
         {
-            Debug.Log("invaded");
+            Debug.Log("You lose!");
+            winLoseTextmeshProUGUI.text = "You lose!";
             Destroy(gameObject);
         }
 

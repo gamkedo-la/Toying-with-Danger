@@ -8,6 +8,7 @@ TagManager:
   - Clickable
   - Enemy
   - CowmationSpawnPoint
+  - WinLoseTextmeshComponent
   layers:
   - Default
   - TransparentFX

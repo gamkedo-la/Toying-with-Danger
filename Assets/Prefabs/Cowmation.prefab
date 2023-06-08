@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullyBlocked: 0
+  winLoseTextmeshProUGUI: {fileID: 1005751183236958953, guid: 328564ce08fbb6a4c9731f1aad66964e, type: 3}
 --- !u!1 &819451478066035932
 GameObject:
   m_ObjectHideFlags: 0

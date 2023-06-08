@@ -12,6 +12,8 @@ public class GameManagerScript : MonoBehaviour
 
     public float cowmationSpawnInterval = 10.0f;
 
+    public float level_1_time_duration = 30.0f;
+
     public void Awake()
     {
         if (GameManagerScriptInstance == null)

@@ -9,11 +9,6 @@ public class ClickableObjectDetectionScript : MonoBehaviour
     private void Awake()
     {
         clickableGameObjectsArray = GameObject.FindGameObjectsWithTag("Clickable");
-
-        for (int i = 0; i < clickableGameObjectsArray.Length; i++)
-        {
-            Debug.Log("Clickable Object: " + clickableGameObjectsArray[i].gameObject.name);
-        }
     }
 
     // Update is called once per frame
