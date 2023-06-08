@@ -23,8 +23,7 @@ public class ClickableObjectDetectionScript : MonoBehaviour
         {
             if (CheckIfClickWasOnClickableObject(out RaycastHit raycastHit) != null)
             {
-                //update later after pitch
-                raycastHit.transform.gameObject.GetComponent<LongWallObjectScript>().HandleClick();
+                HandleHighlights(raycastHit);
             }
         }
     }
@@ -43,5 +42,13 @@ public class ClickableObjectDetectionScript : MonoBehaviour
         }
 
         return potentiallyClickableObject;
+    }
+
+    private void HandleHighlights(RaycastHit raycastHit)
+    {
+        for (int i = 0; i < clickableGameObjectsArray.Length; i++)
+        {
+            clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>().HandleClick(raycastHit);
+        }
     }
 }

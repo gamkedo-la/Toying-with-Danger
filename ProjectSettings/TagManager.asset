@@ -7,6 +7,7 @@ TagManager:
   - Base
   - Clickable
   - Enemy
+  - CowmationSpawnPoint
   layers:
   - Default
   - TransparentFX

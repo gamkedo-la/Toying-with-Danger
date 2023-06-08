@@ -10,6 +10,8 @@ public class GameManagerScript : MonoBehaviour
 
     public float wallPositionMovementFloat = 0.5f;
 
+    public float cowmationSpawnInterval = 10.0f;
+
     public void Awake()
     {
         if (GameManagerScriptInstance == null)
@@ -20,5 +22,7 @@ public class GameManagerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Debug.Log("GameManagerScriptInstance: " + GameManagerScriptInstance);
     }
 }

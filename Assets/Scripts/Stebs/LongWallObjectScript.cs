@@ -6,6 +6,7 @@ public class LongWallObjectScript : MonoBehaviour
 {
     public bool highlighted = false;
     [SerializeField] Material highlightMaterial;
+    [SerializeField] Material unhighlightedMaterial;
 
     private float positionMovementFloat;
 
@@ -169,9 +170,18 @@ public class LongWallObjectScript : MonoBehaviour
             }
         }
     }
-    public void HandleClick()
+    public void HandleClick(RaycastHit raycastHit)
     {
-        gameObject.transform.GetComponent<MeshRenderer>().material = highlightMaterial;
-        highlighted = true;
+        if (!highlighted && raycastHit.transform.gameObject == gameObject)
+        {
+            gameObject.transform.GetComponent<MeshRenderer>().material = highlightMaterial;
+            highlighted = true;
+        }
+        else
+        {
+            gameObject.transform.GetComponent<MeshRenderer>().material = unhighlightedMaterial;
+            highlighted = false;
+        }
+        
     }    
 }

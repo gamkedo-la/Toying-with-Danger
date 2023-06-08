@@ -12,6 +12,8 @@ public class RedEnemyScript : MonoBehaviour
 
     public bool fullyBlocked = false;
 
+    private GameObject mySpawnPoint;
+
     private void Awake()
     {
         myNavMeshTargetObject = GameObject.FindGameObjectWithTag("Base");
@@ -19,7 +21,14 @@ public class RedEnemyScript : MonoBehaviour
 
         myNavMeshAgent.SetDestination(myNavMeshTargetObject.transform.position);
 
+        mySpawnPoint = GameObject.FindGameObjectWithTag("CowmationSpawnPoint");
+    }
+
+    private void Start()
+    {
         floatDistanceForSuccessfulInvasion = GameManagerScript.GameManagerScriptInstance.floatDistanceForTriggeringBaseInvasion;
+
+        gameObject.transform.position = mySpawnPoint.transform.position;
     }
 
     private void Update()
@@ -35,10 +44,11 @@ public class RedEnemyScript : MonoBehaviour
 
     private void CheckForOutOfBoundsAndDestroyIfSo()
     {
-        bool isOnNavMesh = NavMesh.SamplePosition(myNavMeshAgent.transform.position, out NavMeshHit hit, 1.0f, NavMesh.AllAreas);
+        bool isOnNavMesh = NavMesh.SamplePosition(myNavMeshAgent.transform.position, out NavMeshHit hit, 2.0f, NavMesh.AllAreas);
 
         if (!isOnNavMesh)
         {
+            Debug.Log("out of bounds destruction");
             Destroy(myNavMeshAgent.gameObject);
         }
     }    
