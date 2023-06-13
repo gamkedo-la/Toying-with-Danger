@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlacementSystem : MonoBehaviour
 {
@@ -11,11 +13,44 @@ public class PlacementSystem : MonoBehaviour
 
     private Vector3 lastPosition;
 
+    [SerializeField]
+    private GameObject wallObject;
+    [SerializeField]
+    private GameObject wallParentObject;
+
+    [SerializeField]
+    private GameObject enemyObject;
+    [SerializeField]
+    private GameObject enemyParentObject;
+    [SerializeField]
+    private GameObject enemyDestination;
+
 
     void Update()
     {
         Vector3 mousePosition = GetSelectedMapPosition();
         mouseIndicator.transform.position = mousePosition;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            SpawnWall();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            SpawnEnemy();
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        GameObject enemy = GameObject.Instantiate(enemyObject, enemyParentObject.transform.position, Quaternion.identity, wallParentObject.transform);
+        enemy.GetComponent<EnemyScript>().SetDestination(enemyDestination.transform.position);
+    }
+
+    private void SpawnWall()
+    {
+        Vector3 mousePosition = GetSelectedMapPosition();
+        GameObject.Instantiate(wallObject, mousePosition, Quaternion.identity, wallParentObject.transform);
     }
 
     private Vector3 GetSelectedMapPosition()
