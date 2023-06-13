@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ChristianTower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ChristianCannonRotation cannonRotation;
+    public ChristianTowerRadiusDetection towerRadiusDetection;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(towerRadiusDetection.enemies.Count> 0)
+        {
+            cannonRotation.SetTarget(towerRadiusDetection.GetClosestTarget());
+        }
     }
 }
