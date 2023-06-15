@@ -24,7 +24,5 @@ public class GameManagerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        Debug.Log("GameManagerScriptInstance: " + GameManagerScriptInstance);
     }
 }

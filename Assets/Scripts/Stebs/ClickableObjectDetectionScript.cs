@@ -10,10 +10,10 @@ public class ClickableObjectDetectionScript : MonoBehaviour
     {
         clickableGameObjectsArray = GameObject.FindGameObjectsWithTag("Clickable");
 
-        for (int i = 0; i < clickableGameObjectsArray.Length; i++)
-        {
-            Debug.Log("clickableGameObjectsArray: " + clickableGameObjectsArray);
-        }
+        //for (int i = 0; i < clickableGameObjectsArray.Length; i++)
+        //{
+        //    Debug.Log("clickableGameObjectsArray: " + clickableGameObjectsArray[i].gameObject.name);
+        //}
     }
 
     // Update is called once per frame
@@ -48,7 +48,14 @@ public class ClickableObjectDetectionScript : MonoBehaviour
     {
         for (int i = 0; i < clickableGameObjectsArray.Length; i++)
         {
-            clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>().HandleClick(raycastHit);
+            if (clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>() != null)
+            {
+                clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>().HandleClick(raycastHit);
+            }
+            else
+            {
+                clickableGameObjectsArray[i].GetComponent<MudScript>().HandleClick(raycastHit);
+            }
         }
     }
 }
