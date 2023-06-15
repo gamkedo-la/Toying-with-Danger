@@ -15,7 +15,9 @@ public class RedEnemyScript : MonoBehaviour
 
     private GameObject mySpawnPoint;
 
-    [SerializeField] TextMeshProUGUI winLoseTextmeshProUGUI; 
+    [SerializeField] TextMeshProUGUI winLoseTextmeshProUGUI;
+
+    public bool muddable = true;
 
     private void Awake()
     {

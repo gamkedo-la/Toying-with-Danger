@@ -129,17 +129,25 @@ public class MudScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && other.gameObject.GetComponent<RedEnemyScript>().muddable)
         {
             other.gameObject.GetComponent<NavMeshAgent>().speed *= 4.0f;
+        }
+        else if (other.gameObject.tag == "Enemy" && !other.gameObject.GetComponent<RedEnemyScript>().muddable)
+        {
+            other.gameObject.GetComponent<NavMeshAgent>().speed *= 0.5f;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && other.gameObject.GetComponent<RedEnemyScript>().muddable)
         {
             other.gameObject.GetComponent<NavMeshAgent>().speed *= 0.25f;
+        }
+        else if (other.gameObject.tag == "Enemy" && !other.gameObject.GetComponent<RedEnemyScript>().muddable)
+        {
+            other.gameObject.GetComponent<NavMeshAgent>().speed *= 2.0f;
         }
     }
 }
