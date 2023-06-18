@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NavigationBaker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static NavigationBaker Instance { get; private set; }
+
+    public List<NavMeshSurface> surfaces;
+    public List<NavMeshObstacle> obstacles;
+    private void Awake()
     {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Use this for initialization
+    public void BuildNavMesh()
     {
-        
+
+        for (int i = 0; i < surfaces.Count; i++)
+        {
+            surfaces[i].BuildNavMesh();
+        }
     }
+
 }

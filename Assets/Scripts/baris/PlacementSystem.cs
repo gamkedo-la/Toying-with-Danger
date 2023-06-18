@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlacementSystem : MonoBehaviour
@@ -50,7 +52,9 @@ public class PlacementSystem : MonoBehaviour
     private void SpawnWall()
     {
         Vector3 mousePosition = GetSelectedMapPosition();
-        GameObject.Instantiate(wallObject, mousePosition, Quaternion.identity, wallParentObject.transform);
+        var wall = GameObject.Instantiate(wallObject, mousePosition, Quaternion.identity, wallParentObject.transform);
+        NavigationBaker.Instance.surfaces.Add(wall.GetComponent<NavMeshSurface>());
+        NavigationBaker.Instance.BuildNavMesh();
     }
 
     private Vector3 GetSelectedMapPosition()
