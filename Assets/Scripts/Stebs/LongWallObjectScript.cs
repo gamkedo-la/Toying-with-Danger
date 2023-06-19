@@ -12,11 +12,16 @@ public class LongWallObjectScript : MonoBehaviour
 
     private GameObject[] enemies;
 
+    [SerializeField] GameObject navmeshManager;
+    private NavigationBakerStebs navigationBakerStebsScript;
+
     private void Start()
     {
         positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        navigationBakerStebsScript = navmeshManager.GetComponent<NavigationBakerStebs>();
     }
     private void Update()
     {
@@ -89,6 +94,7 @@ public class LongWallObjectScript : MonoBehaviour
                 //PushBackFullyBlockedEnemies();
 
                 MoveWallForward();
+                navigationBakerStebsScript.BuildNavMesh();
             }              
         }    
     }
@@ -125,6 +131,8 @@ public class LongWallObjectScript : MonoBehaviour
                 newPosition.z = currentPosition.z;
 
                 gameObject.transform.position = newPosition;
+
+                navigationBakerStebsScript.BuildNavMesh();
             }
         }
     }
@@ -146,6 +154,8 @@ public class LongWallObjectScript : MonoBehaviour
                 newPosition.z = newZ_Position_Float;
 
                 gameObject.transform.position = newPosition;
+
+                navigationBakerStebsScript.BuildNavMesh();
             }
         }
     }
@@ -167,6 +177,8 @@ public class LongWallObjectScript : MonoBehaviour
                 newPosition.z = currentPosition.z;
 
                 gameObject.transform.position = newPosition;
+
+                navigationBakerStebsScript.BuildNavMesh();
             }
         }
     }
@@ -176,11 +188,13 @@ public class LongWallObjectScript : MonoBehaviour
         {
             gameObject.transform.GetComponent<MeshRenderer>().material = highlightMaterial;
             highlighted = true;
+            gameObject.isStatic = false;
         }
         else
         {
             gameObject.transform.GetComponent<MeshRenderer>().material = unhighlightedMaterial;
             highlighted = false;
+            gameObject.isStatic = true;
         }
         
     }    
