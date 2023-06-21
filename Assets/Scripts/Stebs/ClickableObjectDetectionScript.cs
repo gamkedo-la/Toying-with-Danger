@@ -23,6 +23,7 @@ public class ClickableObjectDetectionScript : MonoBehaviour
         {
             if (CheckIfClickWasOnClickableObject(out RaycastHit raycastHit) != null)
             {
+                Debug.Log("clickableObject: " + raycastHit.transform.gameObject.name);
                 HandleHighlights(raycastHit);
             }
         }
@@ -52,9 +53,13 @@ public class ClickableObjectDetectionScript : MonoBehaviour
             {
                 clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>().HandleClick(raycastHit);
             }
-            else
+            else if (clickableGameObjectsArray[i].GetComponent <MudScript>() != null)
             {
                 clickableGameObjectsArray[i].GetComponent<MudScript>().HandleClick(raycastHit);
+            }
+            else if (clickableGameObjectsArray[i].GetComponent <MagnetScript>() != null)
+            {
+                clickableGameObjectsArray[i].GetComponent<MagnetScript>().HandleClick(raycastHit);
             }
         }
     }

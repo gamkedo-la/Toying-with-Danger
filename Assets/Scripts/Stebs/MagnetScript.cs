@@ -6,8 +6,31 @@ public class MagnetScript : MonoBehaviour
 {
     private List<GameObject> listOfMagnetizedEnemies;
 
+    private GameObject magnetArm1Object;
+    private GameObject magnetArm2Object;
+    private GameObject magnetBackObject;
+
+    [SerializeField] Material magnetArmHighlightMaterial;
+    [SerializeField] Material magnetArmUnhighlightedMaterial;
+
+    [SerializeField] Material magnetBackHighlightMaterial;
+    [SerializeField] Material magnetBackUnhighlightedMaterial;
+
+
+    public bool highlighted = false;
+
+    private float positionMovementFloat;
+
+
     private void Start()
     {
+        positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
+
+
+        magnetArm1Object = gameObject.transform.Find("MagnetArm1Object").gameObject;
+        magnetArm2Object = gameObject.transform.Find("MagnetArm2Object").gameObject;
+        magnetBackObject = gameObject.transform.Find("MagnetBackObject").gameObject;
+
         listOfMagnetizedEnemies = new List<GameObject>();
     }
 
@@ -17,6 +40,11 @@ public class MagnetScript : MonoBehaviour
         {
             HandleListOfMagnetizedEnemies();
         }
+
+        Handle_W_Key();
+        Handle_A_Key();
+        Handle_S_Key();
+        Handle_D_Key();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -52,6 +80,126 @@ public class MagnetScript : MonoBehaviour
 
             Rigidbody enemyRigidbody = listOfMagnetizedEnemies[i].gameObject.transform.GetComponent<Rigidbody>();
             enemyRigidbody.AddForce(direction * 0.5f);
+        }
+    }
+
+    public void HandleClick(RaycastHit raycastHit)
+    {
+        Debug.Log("inside handleClick of magnet");
+        if (!highlighted && raycastHit.transform.gameObject == gameObject)
+        {
+            magnetArm1Object.transform.GetComponent<MeshRenderer>().material = magnetArmHighlightMaterial;
+            magnetArm2Object.transform.GetComponent<MeshRenderer>().material = magnetArmHighlightMaterial;
+            magnetBackObject.transform.GetComponent<MeshRenderer>().material = magnetBackHighlightMaterial;
+
+            highlighted = true;
+        }
+        else
+        {
+            magnetArm1Object.transform.GetComponent<MeshRenderer>().material = magnetArmUnhighlightedMaterial;
+            magnetArm2Object.transform.GetComponent<MeshRenderer>().material = magnetArmUnhighlightedMaterial;
+            magnetBackObject.transform.GetComponent<MeshRenderer>().material = magnetBackUnhighlightedMaterial;
+
+            highlighted = false;
+        }
+
+    }
+
+    private void Handle_W_Key()
+    {
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            if (highlighted)
+            {
+                //PushBackFullyBlockedEnemies();
+
+                MoveWallForward();
+                //navigationBakerStebsScript.BuildNavMesh();
+            }
+        }
+    }
+
+    private void MoveWallForward()
+    {
+        Vector3 currentPosition = gameObject.transform.position;
+        Vector3 newPosition;
+
+        float currentZ_Position_Float = currentPosition.z;
+        float newZ_Position_Float = currentZ_Position_Float += positionMovementFloat;
+
+        newPosition.x = currentPosition.x;
+        newPosition.y = currentPosition.y;
+        newPosition.z = newZ_Position_Float;
+
+        gameObject.transform.position = newPosition;
+    }
+
+    private void Handle_A_Key()
+    {
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            if (highlighted)
+            {
+                Vector3 currentPosition = gameObject.transform.position;
+                Vector3 newPosition;
+
+                float currentX_Position_Float = currentPosition.x;
+                float newX_Position_Float = currentX_Position_Float -= positionMovementFloat;
+
+                newPosition.x = newX_Position_Float;
+                newPosition.y = currentPosition.y;
+                newPosition.z = currentPosition.z;
+
+                gameObject.transform.position = newPosition;
+
+                //navigationBakerStebsScript.BuildNavMesh();
+            }
+        }
+    }
+
+    private void Handle_S_Key()
+    {
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            if (highlighted)
+            {
+                Vector3 currentPosition = gameObject.transform.position;
+                Vector3 newPosition;
+
+                float currentZ_Position_Float = currentPosition.z;
+                float newZ_Position_Float = currentZ_Position_Float -= positionMovementFloat;
+
+                newPosition.x = currentPosition.x;
+                newPosition.y = currentPosition.y;
+                newPosition.z = newZ_Position_Float;
+
+                gameObject.transform.position = newPosition;
+
+                //navigationBakerStebsScript.BuildNavMesh();
+            }
+        }
+    }
+
+    private void Handle_D_Key()
+    {
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            if (highlighted)
+            {
+                Vector3 currentPosition = gameObject.transform.position;
+                Vector3 newPosition;
+
+                float currentX_Position_Float = currentPosition.x;
+                float newX_Position_Float = currentX_Position_Float += positionMovementFloat;
+
+                newPosition.x = newX_Position_Float;
+                newPosition.y = currentPosition.y;
+                newPosition.z = currentPosition.z;
+
+                gameObject.transform.position = newPosition;
+
+                //navigationBakerStebsScript.BuildNavMesh();
+            }
         }
     }
 }

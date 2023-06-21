@@ -252,7 +252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11837672
 MonoBehaviour:
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 32238048}
   - component: {fileID: 32238047}
   m_Layer: 0
-  m_Name: Magnet (1)
+  m_Name: MagnetArm2Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 114775920}
   - component: {fileID: 114775919}
   m_Layer: 0
-  m_Name: MagnetBack
+  m_Name: MagnetBackObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,7 +609,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &308086701
 GameObject:
@@ -858,8 +858,6 @@ MonoBehaviour:
   surfaces:
   - {fileID: 1772598304}
   - {fileID: 1772598305}
-  - {fileID: 0}
-  - {fileID: 0}
   obstacles: []
   groundObjectParent: {fileID: 1772598299}
 --- !u!4 &412266873
@@ -893,7 +891,7 @@ GameObject:
   - component: {fileID: 537855573}
   - component: {fileID: 537855579}
   m_Layer: 0
-  m_Name: Medium
+  m_Name: MediumOrangeGuy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1061,7 +1059,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_LocalScale.y
@@ -1269,7 +1267,7 @@ GameObject:
   - component: {fileID: 904329913}
   - component: {fileID: 904329919}
   m_Layer: 0
-  m_Name: Small1
+  m_Name: SmallRedGuy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,7 +1396,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &904329919
 Rigidbody:
@@ -1443,7 +1441,7 @@ GameObject:
   - component: {fileID: 1158389531}
   - component: {fileID: 1158389537}
   m_Layer: 0
-  m_Name: Small1 (1)
+  m_Name: SmallRedGuy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1572,7 +1570,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1158389537
 Rigidbody:
@@ -1704,7 +1702,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332451882
 GameObject:
@@ -1718,7 +1716,7 @@ GameObject:
   - component: {fileID: 1332451884}
   - component: {fileID: 1332451883}
   m_Layer: 0
-  m_Name: Magnet (1)
+  m_Name: MagnetParentObject
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,6 +1734,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e375ca776ae89a46b60afd61efc979a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnetArmHighlightMaterial: {fileID: 2100000, guid: b6610d0950f570849b7a1d490aed942d, type: 2}
+  magnetArmUnhighlightedMaterial: {fileID: 2100000, guid: 28d5ae517ee2a6d4586b8c1b734c858f, type: 2}
+  magnetBackHighlightMaterial: {fileID: 2100000, guid: f2fec3890bde7f34faf222af0229a138, type: 2}
+  magnetBackUnhighlightedMaterial: {fileID: 2100000, guid: ca276b203299aef45b0ed392213caaac, type: 2}
+  highlighted: 0
 --- !u!65 &1332451884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1755,8 +1758,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.43087372, y: 1, z: 0.23711282}
-  m_Center: {x: 0.28456137, y: 0, z: 0.05588599}
+  m_Size: {x: 0.6206718, y: 1, z: 0.23711282}
+  m_Center: {x: 0.18966208, y: 0, z: 0.05588599}
 --- !u!4 &1332451885
 Transform:
   m_ObjectHideFlags: 0
@@ -1773,7 +1776,7 @@ Transform:
   - {fileID: 32238046}
   - {fileID: 1446666695}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1362134191
 PrefabInstance:
@@ -1785,7 +1788,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_LocalScale.y
@@ -1865,7 +1868,7 @@ GameObject:
   - component: {fileID: 1446666697}
   - component: {fileID: 1446666696}
   m_Layer: 0
-  m_Name: MagnetBack
+  m_Name: MagnetBackObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1975,7 +1978,7 @@ GameObject:
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &1533320853
 BoxCollider:
@@ -2357,7 +2360,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1553452015
 MonoBehaviour:
@@ -2435,7 +2438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 819451477838626749, guid: 4fca3d5531c0de440bec780fe86803e3, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 819451477838626749, guid: 4fca3d5531c0de440bec780fe86803e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2495,7 +2498,7 @@ GameObject:
   - component: {fileID: 1636419004}
   - component: {fileID: 1636419003}
   m_Layer: 0
-  m_Name: Magnet
+  m_Name: MagnetArm1Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2628,7 +2631,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_LocalScale.y
@@ -2839,7 +2842,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772598299
 GameObject:
@@ -3024,7 +3027,7 @@ GameObject:
   - component: {fileID: 1784230028}
   - component: {fileID: 1784230027}
   m_Layer: 0
-  m_Name: Magnet
+  m_Name: MagnetArm1Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3277,7 +3280,7 @@ GameObject:
   - component: {fileID: 1863290280}
   - component: {fileID: 1863290279}
   m_Layer: 0
-  m_Name: Magnet
+  m_Name: MagnetParentObject
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3313,6 +3316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e375ca776ae89a46b60afd61efc979a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnetArmHighlightMaterial: {fileID: 2100000, guid: b6610d0950f570849b7a1d490aed942d, type: 2}
+  magnetArmUnhighlightedMaterial: {fileID: 2100000, guid: 28d5ae517ee2a6d4586b8c1b734c858f, type: 2}
+  magnetBackHighlightMaterial: {fileID: 2100000, guid: f2fec3890bde7f34faf222af0229a138, type: 2}
+  magnetBackUnhighlightedMaterial: {fileID: 2100000, guid: ca276b203299aef45b0ed392213caaac, type: 2}
+  highlighted: 0
 --- !u!65 &1863290280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3332,8 +3340,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.43087372, y: 1, z: 0.23711282}
-  m_Center: {x: 0.28456137, y: 0, z: 0.05588599}
+  m_Size: {x: 0.61734086, y: 1, z: 0.23711282}
+  m_Center: {x: 0.19132781, y: 0, z: 0.05588599}
 --- !u!1 &1904907177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,7 +3487,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1904907184
 MonoBehaviour:
@@ -3509,7 +3517,7 @@ GameObject:
   - component: {fileID: 2035074086}
   - component: {fileID: 2035074085}
   m_Layer: 0
-  m_Name: Magnet (1)
+  m_Name: MagnetArm2Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3686,8 +3694,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088306233}
-  m_LocalRotation: {x: 0.13502786, y: -0.68947047, z: 0.13317706, w: 0.6990436}
-  m_LocalPosition: {x: 16.693472, y: 7.9309425, z: -0.5477259}
+  m_LocalRotation: {x: 0.37768805, y: 0.006941084, z: -0.002832099, w: 0.9259026}
+  m_LocalPosition: {x: -0.9643053, y: 17.102987, z: -23.554354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3803,7 +3811,7 @@ RectTransform:
   - {fileID: 1538782478}
   - {fileID: 271772423}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3839,7 +3847,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1005751182971789793
 PrefabInstance:
@@ -3956,7 +3964,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1240269325123485446, guid: 5b55618d867b28542acdc71cd70ec246, type: 3}
       propertyPath: m_LocalScale.x
