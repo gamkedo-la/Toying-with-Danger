@@ -24,11 +24,6 @@ public class NavigationBakerStebs : MonoBehaviour
             Instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-
-        for (int i = 0; i < surfaces.Count; i++)
-        {
-            Debug.Log("surfaces[i]: " + surfaces[i].agentTypeID.ToString());
-        }
     }
 
     // Use this for initialization

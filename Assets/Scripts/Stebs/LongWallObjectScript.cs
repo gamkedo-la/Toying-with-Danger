@@ -12,16 +12,11 @@ public class LongWallObjectScript : MonoBehaviour
 
     private GameObject[] enemies;
 
-    [SerializeField] GameObject navmeshManager;
-    private NavigationBakerStebs navigationBakerStebsScript;
-
     private void Start()
     {
         positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        navigationBakerStebsScript = navmeshManager.GetComponent<NavigationBakerStebs>();
     }
     private void Update()
     {
@@ -36,7 +31,18 @@ public class LongWallObjectScript : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.transform.GetComponent<RedEnemyScript>().fullyBlocked = true;
+
+            Rigidbody enemyRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            Destroy(enemyRigidbody);
         }    
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.AddComponent<Rigidbody>();
+        }
     }
 
     private List<GameObject> CheckForFullyBlockedEnemies()
@@ -94,7 +100,7 @@ public class LongWallObjectScript : MonoBehaviour
                 //PushBackFullyBlockedEnemies();
 
                 MoveWallForward();
-                navigationBakerStebsScript.BuildNavMesh();
+                //navigationBakerStebsScript.BuildNavMesh();
             }              
         }    
     }
@@ -132,7 +138,7 @@ public class LongWallObjectScript : MonoBehaviour
 
                 gameObject.transform.position = newPosition;
 
-                navigationBakerStebsScript.BuildNavMesh();
+                //navigationBakerStebsScript.BuildNavMesh();
             }
         }
     }
@@ -155,7 +161,7 @@ public class LongWallObjectScript : MonoBehaviour
 
                 gameObject.transform.position = newPosition;
 
-                navigationBakerStebsScript.BuildNavMesh();
+                //navigationBakerStebsScript.BuildNavMesh();
             }
         }
     }
@@ -178,7 +184,7 @@ public class LongWallObjectScript : MonoBehaviour
 
                 gameObject.transform.position = newPosition;
 
-                navigationBakerStebsScript.BuildNavMesh();
+                //navigationBakerStebsScript.BuildNavMesh();
             }
         }
     }
@@ -188,13 +194,11 @@ public class LongWallObjectScript : MonoBehaviour
         {
             gameObject.transform.GetComponent<MeshRenderer>().material = highlightMaterial;
             highlighted = true;
-            gameObject.isStatic = false;
         }
         else
         {
             gameObject.transform.GetComponent<MeshRenderer>().material = unhighlightedMaterial;
             highlighted = false;
-            gameObject.isStatic = true;
         }
         
     }    
