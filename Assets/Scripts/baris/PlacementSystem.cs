@@ -25,7 +25,7 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField]
     private GameObject enemyParentObject;
     [SerializeField]
-    private GameObject enemyDestination;
+    private GameObject enemyDestinations;
 
 
     void Update()
@@ -46,7 +46,7 @@ public class PlacementSystem : MonoBehaviour
     private void SpawnEnemy()
     {
         GameObject enemy = GameObject.Instantiate(enemyObject, enemyParentObject.transform.position, Quaternion.identity, wallParentObject.transform);
-        enemy.GetComponent<EnemyScript>().SetDestination(enemyDestination.transform.position);
+        enemy.GetComponent<EnemyScript>().SetDestinationObject(enemyDestinations);
     }
 
     private void SpawnWall()
