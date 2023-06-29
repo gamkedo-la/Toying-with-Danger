@@ -15,17 +15,25 @@ public class PlacementSystem : MonoBehaviour
 
     private Vector3 lastPosition;
 
+    [Header("Wall")]
     [SerializeField]
     private GameObject wallObject;
     [SerializeField]
     private GameObject wallParentObject;
 
+    [Header("Enemy")]
     [SerializeField]
     private GameObject enemyObject;
     [SerializeField]
     private GameObject enemyParentObject;
     [SerializeField]
     private GameObject enemyDestinations;
+
+    [Header("Tower")]
+    [SerializeField]
+    private GameObject towerObject;
+    [SerializeField]
+    private GameObject towerParentObject;
 
 
     void Update()
@@ -41,12 +49,10 @@ public class PlacementSystem : MonoBehaviour
         {
             SpawnEnemy();
         }
-    }
-
-    private void SpawnEnemy()
-    {
-        GameObject enemy = GameObject.Instantiate(enemyObject, enemyParentObject.transform.position, Quaternion.identity, wallParentObject.transform);
-        enemy.GetComponent<EnemyScript>().SetDestinationObject(enemyDestinations);
+        if (Input.GetKeyDown(KeyCode.Mouse2))
+        {
+            SpawnTower();
+        }
     }
 
     private void SpawnWall()
@@ -54,6 +60,18 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = GetSelectedMapPosition();
         var wall = GameObject.Instantiate(wallObject, mousePosition, Quaternion.identity, wallParentObject.transform);
         NavigationBaker.Instance.surfaces.Add(wall.GetComponent<NavMeshSurface>());
+        NavigationBaker.Instance.BuildNavMesh();
+    }
+    private void SpawnEnemy()
+    {
+        GameObject enemy = GameObject.Instantiate(enemyObject, enemyParentObject.transform.position, Quaternion.identity, wallParentObject.transform);
+        enemy.GetComponent<EnemyScript>().SetDestinationObject(enemyDestinations);
+    }
+    private void SpawnTower()
+    {
+        Vector3 mousePosition = GetSelectedMapPosition();
+        var tower = GameObject.Instantiate(towerObject, mousePosition, Quaternion.identity, towerParentObject.transform);
+        NavigationBaker.Instance.surfaces.Add(tower.GetComponent<NavMeshSurface>());
         NavigationBaker.Instance.BuildNavMesh();
     }
 
@@ -65,7 +83,7 @@ public class PlacementSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit raycastHit;
 
-        if (Physics.Raycast(ray, out raycastHit, 100, LayerMask.NameToLayer("default")))
+        if (Physics.Raycast(ray, out raycastHit, 100, LayerMask.NameToLayer("Ground")))
         {
             Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
             lastPosition = grid.CellToWorld(gridPosition);

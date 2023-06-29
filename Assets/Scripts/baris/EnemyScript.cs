@@ -61,4 +61,9 @@ public class EnemyScript : MonoBehaviour
     {
         agent.SetDestination(nextDestination);
     }
+
+    public void KillEnemy()
+    {
+        GameObject.Destroy(gameObject);
+    }
 }
