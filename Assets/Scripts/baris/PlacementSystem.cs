@@ -14,6 +14,8 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField]
     private Grid grid;
+    [SerializeField]
+    private Grid grid2;
 
     [SerializeField]
     Material unusableIndicatorMaterial;
@@ -108,8 +110,19 @@ public class PlacementSystem : MonoBehaviour
                 mouseIndicatorsMeshRenderer.material = unusableIndicatorMaterial;
             }
 
-            Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
-            lastPosition = grid.CellToWorld(gridPosition);
+
+            if (raycastHit.transform.gameObject.name == "GroundWithGrid")
+            {
+                Debug.Log("grid1 hit");
+                Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
+                lastPosition = grid.CellToWorld(gridPosition);
+            }
+            else if (raycastHit.transform.gameObject.name == "GroundWithGrid (1)")
+            {
+                Debug.Log("grid2 hit");
+                Vector3Int gridPosition = grid2.WorldToCell(raycastHit.point);
+                lastPosition = grid2.CellToWorld(gridPosition);
+            }    
         }
 
         return lastPosition;
