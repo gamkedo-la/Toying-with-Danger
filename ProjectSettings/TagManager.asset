@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - CowmationSpawnPoint
   - WinLoseTextmeshComponent
+  - Ground
   layers:
   - Default
   - TransparentFX

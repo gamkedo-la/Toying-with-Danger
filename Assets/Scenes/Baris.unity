@@ -1308,6 +1308,14 @@ PrefabInstance:
       propertyPath: enemyParentObject
       value: 
       objectReference: {fileID: 664508306}
+    - target: {fileID: 1521511206255803762, guid: c65075398ce16094c8d4174108a8c7e9, type: 3}
+      propertyPath: usableIndicatorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ecb1d334bb1d84e4486470d78c05c242, type: 2}
+    - target: {fileID: 1521511206255803762, guid: c65075398ce16094c8d4174108a8c7e9, type: 3}
+      propertyPath: unusableIndicatorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 230b04e5565c8e84bbd4a5a463ca8750, type: 2}
     - target: {fileID: 1521511206255803763, guid: c65075398ce16094c8d4174108a8c7e9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1325,6 +1333,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2839740454078664841, guid: ebeb44a169166e34cb2ab65c6b678cd4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2839740454078664841, guid: ebeb44a169166e34cb2ab65c6b678cd4, type: 3}
       propertyPath: m_NavMeshData
       value: 
@@ -1382,12 +1394,24 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3974423777719978511, guid: ebeb44a169166e34cb2ab65c6b678cd4, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974423777719978511, guid: ebeb44a169166e34cb2ab65c6b678cd4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974423778449657260, guid: ebeb44a169166e34cb2ab65c6b678cd4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3974423778449657267, guid: ebeb44a169166e34cb2ab65c6b678cd4, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974423778449657267, guid: ebeb44a169166e34cb2ab65c6b678cd4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
