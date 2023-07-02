@@ -26,7 +26,11 @@ public class BarisTowerFireScript : MonoBehaviour
     public void FireProjectile()
     {
         if (detectionScript.enemies.Count > 0)
+        {
             detectionScript.enemies[0].KillEnemy();
+            detectionScript.enemies.RemoveAt(0);
+        }
+            
         
     }
 }

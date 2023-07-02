@@ -34,9 +34,12 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField]
     private GameObject enemyObject;
     [SerializeField]
+    private GameObject enemySpawnPoint;
+    [SerializeField]
     private GameObject enemyParentObject;
     [SerializeField]
     private GameObject enemyDestinations;
+    
 
     [Header("Tower")]
     [SerializeField]
@@ -78,7 +81,7 @@ public class PlacementSystem : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        GameObject enemy = GameObject.Instantiate(enemyObject, enemyParentObject.transform.position, Quaternion.identity, wallParentObject.transform);
+        GameObject enemy = GameObject.Instantiate(enemyObject, enemySpawnPoint.transform.position, Quaternion.identity, enemyParentObject.transform);
         enemy.GetComponent<EnemyScript>().SetDestinationObject(enemyDestinations);
     }
     private void SpawnTower()
