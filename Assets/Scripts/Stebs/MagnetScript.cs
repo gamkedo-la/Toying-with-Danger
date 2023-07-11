@@ -85,7 +85,6 @@ public class MagnetScript : MonoBehaviour
 
     public void HandleClick(RaycastHit raycastHit)
     {
-        Debug.Log("inside handleClick of magnet");
         if (!highlighted && raycastHit.transform.gameObject == gameObject)
         {
             magnetArm1Object.transform.GetComponent<MeshRenderer>().material = magnetArmHighlightMaterial;

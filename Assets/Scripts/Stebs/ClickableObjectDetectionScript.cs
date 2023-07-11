@@ -23,7 +23,6 @@ public class ClickableObjectDetectionScript : MonoBehaviour
         {
             if (CheckIfClickWasOnClickableObject(out RaycastHit raycastHit) != null)
             {
-                Debug.Log("clickableObject: " + raycastHit.transform.gameObject.name);
                 HandleHighlights(raycastHit);
             }
         }

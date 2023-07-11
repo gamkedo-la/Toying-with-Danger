@@ -8,7 +8,7 @@ public class GameManagerScript : MonoBehaviour
 
     public float floatDistanceForTriggeringBaseInvasion = 1.0f;
 
-    public float wallPositionMovementFloat = 0.5f;
+    public float wallPositionMovementFloat = 1f;
 
     public float cowmationSpawnInterval = 10.0f;
 

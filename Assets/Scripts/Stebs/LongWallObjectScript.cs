@@ -57,6 +57,11 @@ public class LongWallObjectScript : MonoBehaviour
             }    
         }
 
+        for (int i = 0; i < fullyBlockedEnemies.Count - 1; i++)
+        {
+            Debug.Log("fullyBlockedEnemies[i].name: " + fullyBlockedEnemies[i].name);
+        }
+
         return fullyBlockedEnemies;
     }   
     
@@ -64,36 +69,23 @@ public class LongWallObjectScript : MonoBehaviour
     {
         List<GameObject> fullyBlockedEnemies = CheckForFullyBlockedEnemies();
 
-        for (int i = 0; i < fullyBlockedEnemies.Count; i++)
+        for (int i = 0; i < fullyBlockedEnemies.Count - 1; i++)
         {
-            Debug.Log(fullyBlockedEnemies[i]);
-        }    
-
+            Debug.Log("fullyBlockedEnemies[i].name: " + fullyBlockedEnemies[i].name);
+        }
         if (fullyBlockedEnemies.Count != 0)
         {
             for (int i = 0; i < fullyBlockedEnemies.Count; i++)
             {
-                fullyBlockedEnemies[i].GetComponent<Rigidbody>().AddForce(Vector3.back * 10);
+                fullyBlockedEnemies[i].transform.Translate(0,0, -7.5f);
                 fullyBlockedEnemies[i].GetComponent<RedEnemyScript>().fullyBlocked = false;
-
-                Vector3 currentPosition = fullyBlockedEnemies[i].transform.position;
-                Vector3 newPosition;
-
-                float currentZ_Position_Float = currentPosition.z;
-                float newZ_Position_Float = currentZ_Position_Float += 5.0f;
-
-                newPosition.x = currentPosition.x;
-                newPosition.y = currentPosition.y;
-                newPosition.z = newZ_Position_Float;
-
-                fullyBlockedEnemies[i].transform.position = newPosition;
             }
         }     
     }    
 
     private void Handle_W_Key()
     {
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
         {
             if (highlighted)
             {
@@ -111,7 +103,7 @@ public class LongWallObjectScript : MonoBehaviour
         Vector3 newPosition;
 
         float currentZ_Position_Float = currentPosition.z;
-        float newZ_Position_Float = currentZ_Position_Float += positionMovementFloat;
+        float newZ_Position_Float = (currentZ_Position_Float += positionMovementFloat);
 
         newPosition.x = currentPosition.x;
         newPosition.y = currentPosition.y;
@@ -122,15 +114,16 @@ public class LongWallObjectScript : MonoBehaviour
 
     private void Handle_A_Key()
     {
-        if (Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
         {
+            Debug.Log("a key up");
             if (highlighted)
             {
                 Vector3 currentPosition = gameObject.transform.position;
                 Vector3 newPosition;
 
                 float currentX_Position_Float = currentPosition.x;
-                float newX_Position_Float = currentX_Position_Float -= positionMovementFloat;
+                float newX_Position_Float = (currentX_Position_Float -= positionMovementFloat);
 
                 newPosition.x = newX_Position_Float;
                 newPosition.y = currentPosition.y;
@@ -145,7 +138,7 @@ public class LongWallObjectScript : MonoBehaviour
 
     private void Handle_S_Key()
     {
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
         {
             if (highlighted)
             {
@@ -153,7 +146,7 @@ public class LongWallObjectScript : MonoBehaviour
                 Vector3 newPosition;
 
                 float currentZ_Position_Float = currentPosition.z;
-                float newZ_Position_Float = currentZ_Position_Float -= positionMovementFloat;
+                float newZ_Position_Float = (currentZ_Position_Float -= positionMovementFloat);
 
                 newPosition.x = currentPosition.x;
                 newPosition.y = currentPosition.y;
@@ -168,15 +161,16 @@ public class LongWallObjectScript : MonoBehaviour
 
     private void Handle_D_Key()
     {
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
         {
+            Debug.Log("d key up");
             if (highlighted)
             {
                 Vector3 currentPosition = gameObject.transform.position;
                 Vector3 newPosition;
 
                 float currentX_Position_Float = currentPosition.x;
-                float newX_Position_Float = currentX_Position_Float += positionMovementFloat;
+                float newX_Position_Float = (currentX_Position_Float += positionMovementFloat);
 
                 newPosition.x = newX_Position_Float;
                 newPosition.y = currentPosition.y;
