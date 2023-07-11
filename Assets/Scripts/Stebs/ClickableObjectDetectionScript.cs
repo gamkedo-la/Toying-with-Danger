@@ -9,11 +9,6 @@ public class ClickableObjectDetectionScript : MonoBehaviour
     private void Awake()
     {
         clickableGameObjectsArray = GameObject.FindGameObjectsWithTag("Clickable");
-
-        //for (int i = 0; i < clickableGameObjectsArray.Length; i++)
-        //{
-        //    Debug.Log("clickableGameObjectsArray: " + clickableGameObjectsArray[i].gameObject.name);
-        //}
     }
 
     // Update is called once per frame
@@ -50,15 +45,15 @@ public class ClickableObjectDetectionScript : MonoBehaviour
         {
             if (clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>() != null)
             {
-                clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>().HandleClick(raycastHit);
+                //clickableGameObjectsArray[i].GetComponent<LongWallObjectScript>().HandleClick(raycastHit);
             }
             else if (clickableGameObjectsArray[i].GetComponent <MudScript>() != null)
             {
-                clickableGameObjectsArray[i].GetComponent<MudScript>().HandleClick(raycastHit);
+                //clickableGameObjectsArray[i].GetComponent<MudScript>().HandleClick(raycastHit);
             }
             else if (clickableGameObjectsArray[i].GetComponent <MagnetScript>() != null)
             {
-                clickableGameObjectsArray[i].GetComponent<MagnetScript>().HandleClick(raycastHit);
+                //clickableGameObjectsArray[i].GetComponent<MagnetScript>().HandleClick(raycastHit);
             }
         }
     }

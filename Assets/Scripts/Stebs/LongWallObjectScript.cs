@@ -12,6 +12,12 @@ public class LongWallObjectScript : MonoBehaviour
 
     private GameObject[] enemies;
 
+    private Vector3 mOffset;
+    private float mZCoord;
+    private float mDistanceToScreen;
+    public float sensitivityX = 1f;
+    public float sensitivityZ = 1f;
+
     private void Start()
     {
         positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
@@ -195,5 +201,28 @@ public class LongWallObjectScript : MonoBehaviour
             highlighted = false;
         }
         
-    }    
+    }
+
+    void OnMouseDown()
+    {
+        mDistanceToScreen = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        mOffset = gameObject.transform.position - GetMouseWorldPos();
+    }
+
+    private Vector3 GetMouseWorldPos()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = mDistanceToScreen;
+        return Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+
+    void OnMouseDrag()
+    {
+        Vector3 newPosition = GetMouseWorldPos() + mOffset;
+        newPosition.y = transform.position.y; // Preserve the original Y position
+        newPosition.x = transform.position.x + ((newPosition.x - transform.position.x) * sensitivityX); // X Sensitivity
+        newPosition.z = transform.position.z + ((newPosition.z - transform.position.z) * sensitivityZ); // Z Sensitivity
+        transform.position = newPosition;
+    }
 }

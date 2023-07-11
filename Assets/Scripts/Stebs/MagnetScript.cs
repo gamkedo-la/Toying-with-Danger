@@ -21,6 +21,14 @@ public class MagnetScript : MonoBehaviour
 
     private float positionMovementFloat;
 
+    private Vector3 mOffset;
+    private float mZCoord;
+    private float mDistanceToScreen;
+    public float sensitivityX = 1f;
+    public float sensitivityZ = 1f;
+
+    private float magnetizationSensitivity = 0;
+
 
     private void Start()
     {
@@ -38,6 +46,7 @@ public class MagnetScript : MonoBehaviour
     {
         if (listOfMagnetizedEnemies.Count != 0)
         {
+            Debug.Log("should be magnetizing");
             HandleListOfMagnetizedEnemies();
         }
 
@@ -50,6 +59,7 @@ public class MagnetScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            Debug.Log("magnet trigger triggered");
             listOfMagnetizedEnemies.Add(other.gameObject);
         }
     }
@@ -77,30 +87,32 @@ public class MagnetScript : MonoBehaviour
         {
             Vector3 direction = gameObject.transform.position - listOfMagnetizedEnemies[i].gameObject.transform.position;
             direction.Normalize();
+            Debug.Log("direction: " + direction);
 
             Rigidbody enemyRigidbody = listOfMagnetizedEnemies[i].gameObject.transform.GetComponent<Rigidbody>();
-            enemyRigidbody.AddForce(direction * 0.5f);
+            Debug.Log("enemyRigidboy: " + enemyRigidbody);
+            enemyRigidbody.AddForce(direction * magnetizationSensitivity);
         }
     }
 
     public void HandleClick(RaycastHit raycastHit)
     {
-        if (!highlighted && raycastHit.transform.gameObject == gameObject)
-        {
-            magnetArm1Object.transform.GetComponent<MeshRenderer>().material = magnetArmHighlightMaterial;
-            magnetArm2Object.transform.GetComponent<MeshRenderer>().material = magnetArmHighlightMaterial;
-            magnetBackObject.transform.GetComponent<MeshRenderer>().material = magnetBackHighlightMaterial;
+        //if (!highlighted && raycastHit.transform.gameObject == gameObject)
+        //{
+        //    magnetArm1Object.transform.GetComponent<MeshRenderer>().material = magnetArmHighlightMaterial;
+        //    magnetArm2Object.transform.GetComponent<MeshRenderer>().material = magnetArmHighlightMaterial;
+        //    magnetBackObject.transform.GetComponent<MeshRenderer>().material = magnetBackHighlightMaterial;
 
-            highlighted = true;
-        }
-        else
-        {
-            magnetArm1Object.transform.GetComponent<MeshRenderer>().material = magnetArmUnhighlightedMaterial;
-            magnetArm2Object.transform.GetComponent<MeshRenderer>().material = magnetArmUnhighlightedMaterial;
-            magnetBackObject.transform.GetComponent<MeshRenderer>().material = magnetBackUnhighlightedMaterial;
+        //    highlighted = true;
+        //}
+        //else
+        //{
+        //    magnetArm1Object.transform.GetComponent<MeshRenderer>().material = magnetArmUnhighlightedMaterial;
+        //    magnetArm2Object.transform.GetComponent<MeshRenderer>().material = magnetArmUnhighlightedMaterial;
+        //    magnetBackObject.transform.GetComponent<MeshRenderer>().material = magnetBackUnhighlightedMaterial;
 
-            highlighted = false;
-        }
+        //    highlighted = false;
+        //}
 
     }
 
@@ -200,5 +212,34 @@ public class MagnetScript : MonoBehaviour
                 //navigationBakerStebsScript.BuildNavMesh();
             }
         }
+    }
+
+    void OnMouseDown()
+    {
+        mDistanceToScreen = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        mOffset = gameObject.transform.position - GetMouseWorldPos();
+        magnetizationSensitivity = 10f;
+    }
+
+    private Vector3 GetMouseWorldPos()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = mDistanceToScreen;
+        return Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+
+    void OnMouseDrag()
+    {
+        Vector3 newPosition = GetMouseWorldPos() + mOffset;
+        newPosition.y = transform.position.y; // Preserve the original Y position
+        newPosition.x = transform.position.x + ((newPosition.x - transform.position.x) * sensitivityX); // X Sensitivity
+        newPosition.z = transform.position.z + ((newPosition.z - transform.position.z) * sensitivityZ); // Z Sensitivity
+        transform.position = newPosition;
+    }
+
+    private void OnMouseUp()
+    {
+        magnetizationSensitivity = 0f;
     }
 }

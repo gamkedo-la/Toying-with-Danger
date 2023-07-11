@@ -556,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246949752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.636, y: 0.99, z: -0.34}
+  m_LocalPosition: {x: -0.461, y: 0.99, z: -0.533}
   m_LocalScale: {x: 0.12360509, y: 1, z: 0.024201354}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -594,6 +594,8 @@ MonoBehaviour:
   highlighted: 0
   highlightMaterial: {fileID: 2100000, guid: 8d5ffb82ed6b9514bb45497f830b5c79, type: 2}
   unhighlightedMaterial: {fileID: 2100000, guid: 31c1deecf2b896f49869c4ce7759ea38, type: 2}
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!65 &246949756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -815,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &351385328
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -917,6 +919,8 @@ MonoBehaviour:
   highlighted: 0
   highlightMaterial: {fileID: 2100000, guid: 8d5ffb82ed6b9514bb45497f830b5c79, type: 2}
   unhighlightedMaterial: {fileID: 2100000, guid: 31c1deecf2b896f49869c4ce7759ea38, type: 2}
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!208 &351385334
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1150,7 +1154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641249378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.621, y: 0.99, z: -0.433}
+  m_LocalPosition: {x: -0.264, y: 0.99, z: -0.546}
   m_LocalScale: {x: 0.12360509, y: 1, z: 0.024201354}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1188,6 +1192,8 @@ MonoBehaviour:
   highlighted: 0
   highlightMaterial: {fileID: 2100000, guid: 8d5ffb82ed6b9514bb45497f830b5c79, type: 2}
   unhighlightedMaterial: {fileID: 2100000, guid: 31c1deecf2b896f49869c4ce7759ea38, type: 2}
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!65 &641249382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1373,7 +1379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!208 &672659254
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1405,6 +1411,8 @@ MonoBehaviour:
   highlighted: 0
   highlightMaterial: {fileID: 2100000, guid: 8d5ffb82ed6b9514bb45497f830b5c79, type: 2}
   unhighlightedMaterial: {fileID: 2100000, guid: 31c1deecf2b896f49869c4ce7759ea38, type: 2}
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!65 &672659256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1805,6 +1813,8 @@ MonoBehaviour:
   magnetBackHighlightMaterial: {fileID: 2100000, guid: f2fec3890bde7f34faf222af0229a138, type: 2}
   magnetBackUnhighlightedMaterial: {fileID: 2100000, guid: ca276b203299aef45b0ed392213caaac, type: 2}
   highlighted: 0
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!65 &1332451884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1834,7 +1844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332451882}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 21.74, y: 1.17, z: 13.36}
+  m_LocalPosition: {x: 21.74, y: 1.17, z: -21}
   m_LocalScale: {x: 12.5, y: 0.5, z: 12.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2126,7 +2136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533320851}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.603, y: 0.99, z: -0.293}
+  m_LocalPosition: {x: 0.408, y: 0.99, z: -0.558}
   m_LocalScale: {x: 0.12360509, y: 1, z: 0.024201354}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2148,6 +2158,8 @@ MonoBehaviour:
   highlighted: 0
   highlightMaterial: {fileID: 2100000, guid: 8d5ffb82ed6b9514bb45497f830b5c79, type: 2}
   unhighlightedMaterial: {fileID: 2100000, guid: 31c1deecf2b896f49869c4ce7759ea38, type: 2}
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!208 &1533320858
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3241,6 +3253,8 @@ MonoBehaviour:
   highlighted: 0
   highlightMaterial: {fileID: 2100000, guid: 5674a541e972a40418c1afd8fef5dc28, type: 2}
   unhighlightedMaterial: {fileID: 2100000, guid: 3813d908dc032b240a0a926331776471, type: 2}
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!65 &1784930239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3320,7 +3334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784930237}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.61, y: 0.566, z: -9.31}
+  m_LocalPosition: {x: -0.6, y: 0.566, z: -23.4}
   m_LocalScale: {x: 10.851088, y: 0.1, z: 4.2748737}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3380,7 +3394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863290277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.35, y: 1.17, z: 2.55}
+  m_LocalPosition: {x: -23.7, y: 1.17, z: -22.2}
   m_LocalScale: {x: 12.5, y: 0.5, z: 12.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3407,6 +3421,8 @@ MonoBehaviour:
   magnetBackHighlightMaterial: {fileID: 2100000, guid: f2fec3890bde7f34faf222af0229a138, type: 2}
   magnetBackUnhighlightedMaterial: {fileID: 2100000, guid: ca276b203299aef45b0ed392213caaac, type: 2}
   highlighted: 0
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!65 &1863290280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3817,7 +3833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067154029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.594, y: 0.99, z: -0.431}
+  m_LocalPosition: {x: 0.253, y: 0.99, z: -0.558}
   m_LocalScale: {x: 0.12360509, y: 1, z: 0.024201354}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3855,6 +3871,8 @@ MonoBehaviour:
   highlighted: 0
   highlightMaterial: {fileID: 2100000, guid: 8d5ffb82ed6b9514bb45497f830b5c79, type: 2}
   unhighlightedMaterial: {fileID: 2100000, guid: 31c1deecf2b896f49869c4ce7759ea38, type: 2}
+  sensitivityX: 1
+  sensitivityZ: 1
 --- !u!65 &2067154033
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4011,8 +4029,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088306233}
-  m_LocalRotation: {x: 0.16602327, y: 0.010350187, z: -0.001741983, w: 0.986066}
-  m_LocalPosition: {x: 1.7023423, y: 13.65044, z: -36.048203}
+  m_LocalRotation: {x: 0.6482685, y: -0.0011451906, z: 0.00097575085, w: 0.7614103}
+  m_LocalPosition: {x: 0.2980001, y: 37.624557, z: -11.104689}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
