@@ -19,6 +19,20 @@ public class EnemyScript : MonoBehaviour
     private float destinationReachedTreshold = 1.0f;
 
     private bool isEnemyReachedLastDestination = false;
+
+    #region event subscriptions
+
+    private void OnEnable()
+    {
+        EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
+    }
+
+    #endregion
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -57,9 +71,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("An enemy has reached to its destination");
-            isEnemyReachedLastDestination = true;
-            GameObject.Destroy(gameObject);
+            EventManagerScript.InvokeToyReachedBedEvent();
         }
         
     }
@@ -72,6 +84,13 @@ public class EnemyScript : MonoBehaviour
 
     public void KillEnemy()
     {
+        GameObject.Destroy(gameObject);
+    }
+
+    private void HandleToyReachedBedEvent()
+    {
+        Debug.Log("An enemy has reached to its destination");
+        isEnemyReachedLastDestination = true;
         GameObject.Destroy(gameObject);
     }
 }

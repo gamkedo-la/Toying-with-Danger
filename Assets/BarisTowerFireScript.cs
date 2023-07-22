@@ -29,8 +29,6 @@ public class BarisTowerFireScript : MonoBehaviour
         {
             detectionScript.enemies[0].KillEnemy();
             detectionScript.enemies.RemoveAt(0);
-        }
-            
-        
+        }       
     }
 }
