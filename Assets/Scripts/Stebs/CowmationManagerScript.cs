@@ -24,16 +24,8 @@ public class CowmationManagerScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        Spawn_A_Cowmation_Intermittently();
+        //Spawn_A_Cowmation_Intermittently();
     }
 
-    private void Spawn_A_Cowmation_Intermittently()
-    {
-        if (timer >= GameManagerScript.GameManagerScriptInstance.cowmationSpawnInterval)
-        {
-            Instantiate(cowmationPrefab);
-
-            timer = 0;
-        }
-    }
+    
 }

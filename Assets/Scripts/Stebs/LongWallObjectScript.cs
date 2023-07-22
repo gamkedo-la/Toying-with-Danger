@@ -20,7 +20,7 @@ public class LongWallObjectScript : MonoBehaviour
 
     private void Start()
     {
-        positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
+        //positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }

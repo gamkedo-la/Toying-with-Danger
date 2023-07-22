@@ -19,7 +19,7 @@ public class MudScript : MonoBehaviour
 
     private void Start()
     {
-        positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
+        //positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
     }
     private void Update()
     {

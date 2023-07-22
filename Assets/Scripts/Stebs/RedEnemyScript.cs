@@ -32,7 +32,7 @@ public class RedEnemyScript : MonoBehaviour
 
     private void Start()
     {
-        floatDistanceForSuccessfulInvasion = GameManagerScript.GameManagerScriptInstance.floatDistanceForTriggeringBaseInvasion;
+       // floatDistanceForSuccessfulInvasion = GameManagerScript.GameManagerScriptInstance.floatDistanceForTriggeringBaseInvasion;
 
         //gameObject.transform.position = mySpawnPoint.transform.position;
     }

@@ -32,7 +32,7 @@ public class MagnetScript : MonoBehaviour
 
     private void Start()
     {
-        positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
+        //positionMovementFloat = GameManagerScript.GameManagerScriptInstance.wallPositionMovementFloat;
 
 
         magnetArm1Object = gameObject.transform.Find("MagnetArm1Object").gameObject;
