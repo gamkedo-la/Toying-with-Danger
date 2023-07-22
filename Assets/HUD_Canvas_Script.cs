@@ -12,8 +12,57 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     #region cached references
     [SerializeField] GameObject notificationTextGameObject;
-    [SerializeField] GameObject hitPointsTextGameObject;
+    private TextMeshProUGUI notificationTextMesh;
+    [SerializeField] TextMeshProUGUI hitPointsTextGameObject;
     #endregion
 
+    #region event subscriptions
+    private void OnEnable()
+    {
+        EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
+        EventManagerScript.GameOverEvent += HandleGameOverEvent;
+    }
 
+    private void OnDisable()
+    {
+        EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
+        EventManagerScript.GameOverEvent -= HandleGameOverEvent;
+    }
+    #endregion
+
+    private void Start()
+    {
+        hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
+    }
+
+    private void HandleGameOverEvent()
+    {
+        notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "Game Over";
+        notificationTextGameObject.SetActive(true);
+    }
+
+    private void HandleToyReachedBedEvent()
+    {
+        DecrementHitPoints();
+        UpdateHitPointsText();
+        CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate();
+    }
+
+    private void DecrementHitPoints()
+    {
+        GameManagerScript.hitPoints--;
+    }
+
+    private void CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate()
+    {
+        if (GameManagerScript.hitPoints == 0)
+        {
+            EventManagerScript.InvokeGameOverEvent();
+        }
+    }
+
+    private void UpdateHitPointsText()
+    {
+        hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
+    }
 }

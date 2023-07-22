@@ -9,21 +9,10 @@ public class GameManagerScript : MonoBehaviour
 
     #region designer properties
     [Tooltip("The total hit points at the start of the level.")]
-    public static int hitPoints;
+    public static int hitPoints = 3;
     #endregion
 
-    #region event subscriptions
-
-    private void OnEnable()
-    {
-        EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
-    }
-
-    private void OnDisable()
-    {
-        EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
-    }
-    #endregion
+    
     public void Awake()
     {
         if (GameManagerScriptInstance == null)
@@ -34,24 +23,5 @@ public class GameManagerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void HandleToyReachedBedEvent()
-    {
-        DecrementHitPoints();
-        CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate();
-    }
-
-    private void DecrementHitPoints()
-    {
-        hitPoints--;
-    }
-
-    private void CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate()
-    {
-        if (hitPoints == 0)
-        {
-            EventManagerScript.InvokeGameOverEvent();
-        }
-    }
+    }    
 }
