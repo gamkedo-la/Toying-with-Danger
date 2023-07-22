@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -11,9 +12,13 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private Queue<Transform> enemyDestinations = new Queue<Transform>();
     private Vector3 nextDestination;
+    [SerializeField]
+    private int PlayerHealth = 3;
 
     [SerializeField]
     private float destinationReachedTreshold = 1.0f;
+
+    private bool isEnemyReachedLastDestination = false;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -52,14 +57,17 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Enemy penetrated to the castle!");
+            Debug.Log("An enemy has reached to its destination");
+            isEnemyReachedLastDestination = true;
+            GameObject.Destroy(gameObject);
         }
         
     }
 
     private void SetAgentDestination()
     {
-        agent.SetDestination(nextDestination);
+        if (!isEnemyReachedLastDestination)
+            agent.SetDestination(nextDestination);
     }
 
     public void KillEnemy()
