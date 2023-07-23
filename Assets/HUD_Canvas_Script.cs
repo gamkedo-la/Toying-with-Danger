@@ -14,17 +14,20 @@ public class HUD_Canvas_Script : MonoBehaviour
     [SerializeField] GameObject notificationTextGameObject;
     private TextMeshProUGUI notificationTextMesh;
     [SerializeField] TextMeshProUGUI hitPointsTextGameObject;
+    [SerializeField] TextMeshProUGUI preparationStageTextGameObject;
     #endregion
 
     #region event subscriptions
     private void OnEnable()
     {
+        EventManagerScript.StartRealTimeStageEvent += HandleStartRealTimeStageEvent;
         EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent += HandleGameOverEvent;
     }
 
     private void OnDisable()
     {
+        EventManagerScript.StartRealTimeStageEvent -= HandleStartRealTimeStageEvent;
         EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent -= HandleGameOverEvent;
     }
@@ -64,5 +67,10 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void UpdateHitPointsText()
     {
         hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
+    }
+
+    private void HandleStartRealTimeStageEvent()
+    {
+        preparationStageTextGameObject.gameObject.SetActive(false);
     }
 }
