@@ -13,7 +13,13 @@ public class GameManagerScript : MonoBehaviour
 
     [Tooltip("The total number of puzzle pieces the player can place during the preparation stage.")]
     public static int totalPreparationStagePuzzlePieces = 5;
+
     public static int preparationStagePuzzlePiecesLeft = 5;
+
+    [Tooltip("The total number of puzzle pieces the player can place during the real time stage.")]
+    public static int totalRealTimeStagePuzzlePieces = 5;
+
+    public static int realTimeStagePuzzlePiecesLeft = 5;
 
     [Tooltip("The total hit points at the start of the level.")]
     public static int hitPoints = 3;

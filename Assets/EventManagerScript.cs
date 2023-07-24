@@ -13,17 +13,25 @@ public class EventManagerScript : MonoBehaviour
     //Take note that the events defined below the delegates take similarly named delegates so they are linked. For example GameOverEventDelegate() goes with GameOverEvent by declaring it as a
     //GameOverEventDelegate type.
     #region delegates
+    public delegate void PreparationPuzzlePiecePlacementEventDelegate();
+    public delegate void OutOfPreparationPiecesEventDelegate();
+    public delegate void StartRealTimeStageEventDelegate();
+    public delegate void RealTimePuzzlePiecePlacementEventDelegate();
+    public delegate void OutOfRealTimePiecesEventDelegate();
     public delegate void ToyReachedBedEventDelegate();
     public delegate void GameOverEventDelegate();
-    public delegate void StartRealTimeStageEventDelegate();
     #endregion
 
     //events are specific occurrences that happen in the game. For example, GameOverEvent. When the game over event is called, perhaps a notification manager will display "game over", the audio manager will
     //play game over sfx, and a menu manager will display options for trying the level again or going back to the main menu
     #region events
+    public static event PreparationPuzzlePiecePlacementEventDelegate PreparationPuzzlePiecePlacementEvent;
+    public static event OutOfPreparationPiecesEventDelegate OutOfPreparationPiecesEvent;
+    public static event StartRealTimeStageEventDelegate StartRealTimeStageEvent;
+    public static event RealTimePuzzlePiecePlacementEventDelegate RealTimePuzzlePiecePlacementEvent;
+    public static event OutOfRealTimePiecesEventDelegate OutOfRealTimePiecesEvent;
     public static event ToyReachedBedEventDelegate ToyReachedBedEvent;
     public static event GameOverEventDelegate GameOverEvent;
-    public static event StartRealTimeStageEventDelegate StartRealTimeStageEvent;
     #endregion
 
     //Event invocations are the one location where an event is triggered, and then the event will call all event methods stored in it.
@@ -41,6 +49,26 @@ public class EventManagerScript : MonoBehaviour
     public static void InvokeStartRealTimeStageEvent()
     {
         StartRealTimeStageEvent.Invoke();
+    }
+
+    public static void InvokePreparationPuzzlePiecePlacementEvent()
+    {
+        PreparationPuzzlePiecePlacementEvent.Invoke();
+    }
+
+    public static void InvokeOutOfPreparationPiecesEvent()
+    {
+        OutOfPreparationPiecesEvent.Invoke();
+    }
+
+    public static void InvokeRealTimePuzzlePiecePlacementEvent()
+    {
+        RealTimePuzzlePiecePlacementEvent.Invoke();
+    }
+
+    public static void InvokeOutOfRealTimePiecesEvent()
+    {
+        OutOfRealTimePiecesEvent.Invoke();
     }
     #endregion
 }

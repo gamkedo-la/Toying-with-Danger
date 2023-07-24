@@ -19,11 +19,15 @@ public class PlayerScript : MonoBehaviour
     private void OnEnable()
     {
         EventManagerScript.StartRealTimeStageEvent += HandleStartRealTimeStageEvent;
+        EventManagerScript.PreparationPuzzlePiecePlacementEvent += HandlePreparationPuzzlePiecePlacementEvent;
+        EventManagerScript.RealTimePuzzlePiecePlacementEvent += HandleRealTimePuzzlePiecePlacementEvent;
     }
 
     private void OnDisable()
     {
         EventManagerScript.StartRealTimeStageEvent -= HandleStartRealTimeStageEvent;
+        EventManagerScript.PreparationPuzzlePiecePlacementEvent -= HandlePreparationPuzzlePiecePlacementEvent;
+        EventManagerScript.RealTimePuzzlePiecePlacementEvent -= HandleRealTimePuzzlePiecePlacementEvent;
     }
     #endregion
 
@@ -38,13 +42,17 @@ public class PlayerScript : MonoBehaviour
             MoveCurrentPuzzlePiece();
         }
 
-        //this automatically makes the current puzzle piece no longer movable, therefore the next instantiation will be controlled by the mouse
         if (Input.GetMouseButtonUp(0))
         {
-            if (GameManagerScript.preparationStagePuzzlePiecesLeft > 0)
+            if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
             {
-                PlaceCurrentPuzzlePiece();
-            }   
+               EventManagerScript.InvokePreparationPuzzlePiecePlacementEvent();
+            }  
+            else if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
+            {
+                print("mouseUp recognizing realTimeStage gameState");
+                EventManagerScript.InvokeRealTimePuzzlePiecePlacementEvent();
+            }
         }
     }
 
@@ -83,11 +91,61 @@ public class PlayerScript : MonoBehaviour
     private void PlaceCurrentPuzzlePiece()
     {
         currentPuzzlePiece = null;
-        if (GameManagerScript.preparationStagePuzzlePiecesLeft > 1)
+
+        if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
+        {
+            PlacePreparationStagePuzzlePiece();
+        }
+        else if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
+        {
+            print("inside placeCurrentPuzzlePiece");
+            PlaceRealTimeStagePuzzlePiece();
+        }
+    }
+
+    private void PlacePreparationStagePuzzlePiece()
+    {
+        GameManagerScript.preparationStagePuzzlePiecesLeft--;
+
+        if (GameManagerScript.preparationStagePuzzlePiecesLeft == 0)
+        {
+            EventManagerScript.InvokeOutOfPreparationPiecesEvent();
+        }
+
+        if (GameManagerScript.preparationStagePuzzlePiecesLeft > 0)
         {
             InstantiatePuzzlePiece();
         }
-        GameManagerScript.preparationStagePuzzlePiecesLeft--;
-        print("GameManagerScript.preparationStagePuzzlePiecesLeft: " + GameManagerScript.preparationStagePuzzlePiecesLeft);
+    }
+
+    private void PlaceRealTimeStagePuzzlePiece()
+    {
+        GameManagerScript.realTimeStagePuzzlePiecesLeft--;
+        if (GameManagerScript.realTimeStagePuzzlePiecesLeft == 0)
+        {
+            EventManagerScript.InvokeOutOfRealTimePiecesEvent();
+        }
+
+        if (GameManagerScript.realTimeStagePuzzlePiecesLeft > 0)
+        {
+            print("should be placing real time piece");
+            InstantiatePuzzlePiece();
+        }
+    }
+
+    private void HandlePreparationPuzzlePiecePlacementEvent()
+    {
+        if (GameManagerScript.preparationStagePuzzlePiecesLeft > 0)
+        {
+            PlaceCurrentPuzzlePiece();
+        } 
+    }
+
+    private void HandleRealTimePuzzlePiecePlacementEvent()
+    {
+        if (GameManagerScript.realTimeStagePuzzlePiecesLeft > 0)
+        {
+            PlaceCurrentPuzzlePiece();
+        }
     }
 }

@@ -16,11 +16,14 @@ public class HUD_Canvas_Script : MonoBehaviour
     [SerializeField] TextMeshProUGUI hitPointsTextGameObject;
     [SerializeField] TextMeshProUGUI preparationStageTextGameObject;
     [SerializeField] TextMeshProUGUI timerTextGameObject;
+    [SerializeField] TextMeshProUGUI preparationPiecesTextGameObject;
     #endregion
 
     #region event subscriptions
     private void OnEnable()
     {
+        EventManagerScript.PreparationPuzzlePiecePlacementEvent += HandlePreparationPuzzlePiecePlacementEvent;
+        EventManagerScript.OutOfPreparationPiecesEvent += HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent += HandleStartRealTimeStageEvent;
         EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent += HandleGameOverEvent;
@@ -28,6 +31,8 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void OnDisable()
     {
+        EventManagerScript.PreparationPuzzlePiecePlacementEvent -= HandlePreparationPuzzlePiecePlacementEvent;
+        EventManagerScript.OutOfPreparationPiecesEvent -= HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent -= HandleStartRealTimeStageEvent;
         EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent -= HandleGameOverEvent;
@@ -37,14 +42,30 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void Start()
     {
         hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
+        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.totalPreparationStagePuzzlePieces.ToString();
     }
 
-    private void HandleGameOverEvent()
+    #region preparation stage
+    private void HandlePreparationPuzzlePiecePlacementEvent()
     {
-        notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "Game Over";
-        notificationTextGameObject.SetActive(true);
+        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.preparationStagePuzzlePiecesLeft;
     }
 
+    private void HandleOutOfPreparationPiecesEvent()
+    {
+        preparationStageTextGameObject.text = "You're out of preparation pieces. Press space when ready.";
+    }
+    #endregion
+
+    #region real time stage
+    private void HandleStartRealTimeStageEvent()
+    {
+        preparationStageTextGameObject.gameObject.SetActive(false);
+        timerTextGameObject.gameObject.SetActive(true);
+        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.totalRealTimeStagePuzzlePieces;
+    }
+
+    #region toy reached bed event
     private void HandleToyReachedBedEvent()
     {
         DecrementHitPoints();
@@ -73,10 +94,12 @@ public class HUD_Canvas_Script : MonoBehaviour
     {
         hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
     }
+    #endregion
+    #endregion
 
-    private void HandleStartRealTimeStageEvent()
+    private void HandleGameOverEvent()
     {
-        preparationStageTextGameObject.gameObject.SetActive(false);
-        timerTextGameObject.gameObject.SetActive(true);
+        notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "Game Over";
+        notificationTextGameObject.SetActive(true);
     }
 }
