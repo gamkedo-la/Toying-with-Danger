@@ -14,6 +14,9 @@ public class GameManagerScript : MonoBehaviour
     [Tooltip("The total hit points at the start of the level.")]
     public static int hitPoints = 3;
 
+    [Tooltip("Total amount of time for the level.")]
+    public static float totalLevelTime = 30.0f;
+
     #endregion
 
     #region event subscriptions

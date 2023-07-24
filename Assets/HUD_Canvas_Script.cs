@@ -15,6 +15,7 @@ public class HUD_Canvas_Script : MonoBehaviour
     private TextMeshProUGUI notificationTextMesh;
     [SerializeField] TextMeshProUGUI hitPointsTextGameObject;
     [SerializeField] TextMeshProUGUI preparationStageTextGameObject;
+    [SerializeField] TextMeshProUGUI timerTextGameObject;
     #endregion
 
     #region event subscriptions
@@ -76,5 +77,6 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void HandleStartRealTimeStageEvent()
     {
         preparationStageTextGameObject.gameObject.SetActive(false);
+        timerTextGameObject.gameObject.SetActive(true);
     }
 }

@@ -7,16 +7,14 @@ public class TimerScript : MonoBehaviour
 {
     private float currentLevelTimerDuration;
 
-    private TextMeshProUGUI textmeshComponent;
-
-    [SerializeField] TextMeshProUGUI winLoseTextmeshProUGUI;
+    [SerializeField] TextMeshProUGUI canvasHUD_TimerTextGameObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        //currentLevelTimerDuration = GameManagerScript.GameManagerScriptInstance.level_1_time_duration;
+        currentLevelTimerDuration = GameManagerScript.totalLevelTime;
 
-        textmeshComponent = gameObject.transform.GetComponent<TextMeshProUGUI>();
+        canvasHUD_TimerTextGameObject = gameObject.transform.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -24,12 +22,11 @@ public class TimerScript : MonoBehaviour
     {
         currentLevelTimerDuration -= Time.deltaTime;
 
-        textmeshComponent.text = currentLevelTimerDuration.ToString();
+        canvasHUD_TimerTextGameObject.text = "Time left: " + currentLevelTimerDuration.ToString();
 
         if (currentLevelTimerDuration <= 0)
         {
             currentLevelTimerDuration = 0;
-            winLoseTextmeshProUGUI.text = "You win!";
         }
     }
 }
