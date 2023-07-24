@@ -27,11 +27,20 @@ public class PlayerScript : MonoBehaviour
     }
     #endregion
 
+    private void Start()
+    {
+        InstantiatePuzzlePiece();
+    }
     private void Update()
     {
         if (currentPuzzlePiece != null)
         {
             MoveCurrentPuzzlePiece();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            InstantiatePuzzlePiece();
         }
     }
     private void HandleStartRealTimeStageEvent()
@@ -47,7 +56,7 @@ public class PlayerScript : MonoBehaviour
         // Convert the mouse position to world space
         Vector3 mousePositionWorldSpace = Camera.main.ScreenToWorldPoint(new Vector3(mousePositionScreenSpace.x, mousePositionScreenSpace.y, 10f));
 
-        // Instantiate the prefab at the mouse's position
+        // Instantiate the prefab at the mouse's position and make it the current puzzle piece
         currentPuzzlePiece = Instantiate(defaultPuzzlePiece, mousePositionWorldSpace, Quaternion.identity);
     }
 
@@ -64,5 +73,10 @@ public class PlayerScript : MonoBehaviour
 
         // Set the puzzle piece's position towards the mouse cursor smoothly
         currentPuzzlePiece.transform.position = Vector3.Lerp(currentPuzzlePiece.transform.position, mousePositionWorldSpace, Time.deltaTime * followSpeed);
+    }
+
+    private void PlacePuzzlePiece()
+    {
+        InstantiatePuzzlePiece();
     }
 }
