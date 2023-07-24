@@ -11,6 +11,10 @@ public class GameManagerScript : MonoBehaviour
     public enum GameState { preparationStage, realTimeStage, gameOver }
     public static GameState currentGameState = GameState.preparationStage;
 
+    [Tooltip("The total number of puzzle pieces the player can place during the preparation stage.")]
+    public static int totalPreparationStagePuzzlePieces = 5;
+    public static int preparationStagePuzzlePiecesLeft = 5;
+
     [Tooltip("The total hit points at the start of the level.")]
     public static int hitPoints = 3;
 

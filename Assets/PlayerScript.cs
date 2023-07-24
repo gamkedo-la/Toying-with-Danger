@@ -38,11 +38,16 @@ public class PlayerScript : MonoBehaviour
             MoveCurrentPuzzlePiece();
         }
 
+        //this automatically makes the current puzzle piece no longer movable, therefore the next instantiation will be controlled by the mouse
         if (Input.GetMouseButtonUp(0))
         {
-            InstantiatePuzzlePiece();
+            if (GameManagerScript.preparationStagePuzzlePiecesLeft > 0)
+            {
+                PlaceCurrentPuzzlePiece();
+            }   
         }
     }
+
     private void HandleStartRealTimeStageEvent()
     {
         InstantiatePuzzlePiece();
@@ -75,8 +80,14 @@ public class PlayerScript : MonoBehaviour
         currentPuzzlePiece.transform.position = Vector3.Lerp(currentPuzzlePiece.transform.position, mousePositionWorldSpace, Time.deltaTime * followSpeed);
     }
 
-    private void PlacePuzzlePiece()
+    private void PlaceCurrentPuzzlePiece()
     {
-        InstantiatePuzzlePiece();
+        currentPuzzlePiece = null;
+        if (GameManagerScript.preparationStagePuzzlePiecesLeft > 1)
+        {
+            InstantiatePuzzlePiece();
+        }
+        GameManagerScript.preparationStagePuzzlePiecesLeft--;
+        print("GameManagerScript.preparationStagePuzzlePiecesLeft: " + GameManagerScript.preparationStagePuzzlePiecesLeft);
     }
 }
