@@ -25,6 +25,8 @@ public class HUD_Canvas_Script : MonoBehaviour
         EventManagerScript.PreparationPuzzlePiecePlacementEvent += HandlePreparationPuzzlePiecePlacementEvent;
         EventManagerScript.OutOfPreparationPiecesEvent += HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent += HandleStartRealTimeStageEvent;
+        EventManagerScript.RealTimePuzzlePiecePlacementEvent += HandleRealTimePuzzlePiecePlacementEvent;
+        EventManagerScript.OutOfRealTimePiecesEvent += HandleOutOfRealTimePiecesEvent;
         EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent += HandleGameOverEvent;
     }
@@ -34,6 +36,8 @@ public class HUD_Canvas_Script : MonoBehaviour
         EventManagerScript.PreparationPuzzlePiecePlacementEvent -= HandlePreparationPuzzlePiecePlacementEvent;
         EventManagerScript.OutOfPreparationPiecesEvent -= HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent -= HandleStartRealTimeStageEvent;
+        EventManagerScript.RealTimePuzzlePiecePlacementEvent -= HandleRealTimePuzzlePiecePlacementEvent;
+        EventManagerScript.OutOfRealTimePiecesEvent -= HandleOutOfRealTimePiecesEvent;
         EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent -= HandleGameOverEvent;
     }
@@ -63,6 +67,17 @@ public class HUD_Canvas_Script : MonoBehaviour
         preparationStageTextGameObject.gameObject.SetActive(false);
         timerTextGameObject.gameObject.SetActive(true);
         preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.totalRealTimeStagePuzzlePieces;
+    }
+
+    private void HandleRealTimePuzzlePiecePlacementEvent()
+    {
+        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.realTimeStagePuzzlePiecesLeft;
+    }
+
+    private void HandleOutOfRealTimePiecesEvent()
+    {
+        preparationStageTextGameObject.gameObject.SetActive(true);
+        preparationStageTextGameObject.text = "You're out of pieces. Good luck!";
     }
 
     #region toy reached bed event

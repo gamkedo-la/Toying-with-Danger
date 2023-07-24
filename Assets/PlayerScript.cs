@@ -50,7 +50,6 @@ public class PlayerScript : MonoBehaviour
             }  
             else if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
             {
-                print("mouseUp recognizing realTimeStage gameState");
                 EventManagerScript.InvokeRealTimePuzzlePiecePlacementEvent();
             }
         }
@@ -128,7 +127,6 @@ public class PlayerScript : MonoBehaviour
 
         if (GameManagerScript.realTimeStagePuzzlePiecesLeft > 0)
         {
-            print("should be placing real time piece");
             InstantiatePuzzlePiece();
         }
     }
