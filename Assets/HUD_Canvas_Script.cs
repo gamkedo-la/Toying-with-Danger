@@ -46,7 +46,6 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void HandleToyReachedBedEvent()
     {
-        Debug.Log("handle toy reached bed event from HUD script");
         DecrementHitPoints();
         UpdateHitPointsText();
         CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate();
@@ -55,6 +54,10 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void DecrementHitPoints()
     {
         GameManagerScript.hitPoints--;
+        if (GameManagerScript.hitPoints < 0)
+        {
+            GameManagerScript.hitPoints = 0;
+        }
     }
 
     private void CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate()

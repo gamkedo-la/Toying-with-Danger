@@ -21,11 +21,13 @@ public class GameManagerScript : MonoBehaviour
     private void OnEnable()
     {
         EventManagerScript.StartRealTimeStageEvent += HandleStartRealTimeStageEvent;
+        EventManagerScript.GameOverEvent += HandleGameOverEvent;
     }
 
     private void OnDisable()
     {
         EventManagerScript.StartRealTimeStageEvent -= HandleStartRealTimeStageEvent;
+        EventManagerScript.GameOverEvent -= HandleGameOverEvent;
     }
 
     #endregion
@@ -54,5 +56,10 @@ public class GameManagerScript : MonoBehaviour
     private void HandleStartRealTimeStageEvent()
     {
         GameManagerScript.currentGameState = GameManagerScript.GameState.realTimeStage;
+    }
+
+    private void HandleGameOverEvent()
+    {
+        currentGameState = GameState.gameOver;
     }
 }
