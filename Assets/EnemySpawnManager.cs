@@ -47,6 +47,4 @@ public class EnemySpawnManager : MonoBehaviour
             timeSinceLastEnemySpawned = 0;
         }
     }
-
-
 }

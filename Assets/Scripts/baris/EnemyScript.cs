@@ -22,16 +22,6 @@ public class EnemyScript : MonoBehaviour
 
     #region event subscriptions
 
-    private void OnEnable()
-    {
-        EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
-    }
-
-    private void OnDisable()
-    {
-        EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
-    }
-
     #endregion
     private void Awake()
     {
@@ -71,7 +61,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            EventManagerScript.InvokeToyReachedBedEvent();
+            //EventManagerScript.InvokeToyReachedBedEvent();
         }
         
     }
@@ -80,17 +70,5 @@ public class EnemyScript : MonoBehaviour
     {
         if (!isEnemyReachedLastDestination)
             agent.SetDestination(nextDestination);
-    }
-
-    public void KillEnemy()
-    {
-        GameObject.Destroy(gameObject);
-    }
-
-    private void HandleToyReachedBedEvent()
-    {
-        Debug.Log("An enemy has reached to its destination");
-        isEnemyReachedLastDestination = true;
-        GameObject.Destroy(gameObject);
     }
 }
