@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
+    #region designer properties
     [SerializeField]
     private int totalNumberOfEnemiesToSpawn;
 
     [SerializeField]
+    [Tooltip("How often this spawn point will spawn an enemy.")]
     private float spawnInterval;
-    private float timeSinceLastEnemySpawned = 0;
+    #endregion
 
+    private float timeSinceLastEnemySpawned = 3;
+
+    #region cached references
     [SerializeField]
     private GameObject enemyToSpawn;//Maybe we can make this as a scriptableobject or an array;
     [SerializeField]
     private GameObject enemyDestinations;
+    #endregion
 
     // Update is called once per frame
     void Update()
