@@ -64,9 +64,9 @@ public class HUD_Canvas_Script : MonoBehaviour
     #region real time stage
     private void HandleStartRealTimeStageEvent()
     {
-        preparationStageTextGameObject.gameObject.SetActive(false);
         timerTextGameObject.gameObject.SetActive(true);
         preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.totalRealTimeStagePuzzlePieces;
+        preparationStageTextGameObject.text = "You now have some more pieces. Stop the toys!";
     }
 
     private void HandleRealTimePuzzlePiecePlacementEvent()

@@ -97,7 +97,6 @@ public class PlayerScript : MonoBehaviour
         }
         else if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
         {
-            print("inside placeCurrentPuzzlePiece");
             PlaceRealTimeStagePuzzlePiece();
         }
     }
