@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject currentPuzzlePiece;
     private Collider currentPuzzleObjectCollider;
     private Vector3 lastPositionForMouse;
+    private float wallZOffset;
 
     #region event subscriptions
     private void OnEnable()
@@ -42,6 +43,7 @@ public class PlayerScript : MonoBehaviour
     {
         InstantiatePuzzlePiece();
         NavigationBaker.Instance.BuildNavMesh();
+        wallZOffset = grid.cellSize.z / 2;
     }
     private void Update()
     {
@@ -52,6 +54,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            print("recognizing mouseUp");
             if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
             {
                EventManagerScript.InvokePreparationPuzzlePiecePlacementEvent();
@@ -88,6 +91,7 @@ public class PlayerScript : MonoBehaviour
 
         // Apply clamping to the Y-coordinate
         mousePositionWorldSpace.y = 0.5f;
+        mousePositionWorldSpace.z += wallZOffset;
 
         //// Get the mouse position in screen space
         //Vector3 mousePositionScreenSpace = Input.mousePosition;
@@ -115,19 +119,19 @@ public class PlayerScript : MonoBehaviour
         {
             // Get the mouse position in screen space
             Vector3 mousePositionScreenSpace = Input.mousePosition;
-
+            mousePositionScreenSpace.z = Camera.main.transform.position.y;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePositionScreenSpace);
             // Convert the mouse position to world space
-            mousePositionWorldSpace = Camera.main.ScreenToWorldPoint(new Vector3(mousePositionScreenSpace.x, mousePositionScreenSpace.y, 10f));
-
-            
+            mousePositionWorldSpace = worldPosition;
         }
 
         // Apply clamping to the Y-coordinate
         mousePositionWorldSpace.y = 0.5f;
+        mousePositionWorldSpace.z += wallZOffset;
 
 
         // Set the puzzle piece's position towards the mouse cursor smoothly
-        currentPuzzlePiece.transform.position = Vector3.Lerp(currentPuzzlePiece.transform.position, mousePositionWorldSpace, Time.deltaTime * followSpeed);
+        currentPuzzlePiece.transform.position = mousePositionWorldSpace;
     }
 
     private bool GetSelectedMapPosition()
@@ -142,25 +146,42 @@ public class PlayerScript : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit raycastHit;
 
-        if (Physics.Raycast(ray, out raycastHit, 100/*, LayerMask.NameToLayer("Ground")*/))//
-        {
-            //if (raycastHit.transform.tag == "Ground")
-            //{
-            //    mouseIndicatorsMeshRenderer.material = usableIndicatorMaterial;
-            //}
-            //else
-            //{
-            //    mouseIndicatorsMeshRenderer.material = unusableIndicatorMaterial;
-            //}
+        int layerMask = 1 << LayerMask.NameToLayer("IgnoreRaycast");
+        layerMask = ~layerMask; // This inverts the layerMask, allowing the raycast to interact with everything EXCEPT the IgnoreRaycast layer.
 
 
-            if (raycastHit.transform.tag == "Ground")
+        //if (Physics.Raycast(raycastHit, out raycastHit, 100/*, LayerMask.NameToLayer("Ground")*/))//
+        //{
+        //if (raycastHit.transform.tag == "Ground")
+        //{
+        //    mouseIndicatorsMeshRenderer.material = usableIndicatorMaterial;
+        //}
+        //else
+        //{
+        //    mouseIndicatorsMeshRenderer.material = unusableIndicatorMaterial;
+        //}
+
+        if (Physics.Raycast(ray, out raycastHit, 100, layerMask))
             {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastHit.distance, Color.yellow);
                 Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
                 lastPositionForMouse = grid.CellToWorld(gridPosition);
                 isGroundFound = true;
+                //Debug.Log("Did Hit");
             }
-        }
+            else
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+                //Debug.Log("Did not Hit");
+            }
+
+            //if (raycastHit.transform.tag == "Ground")
+            //{
+            //    Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
+            //    lastPositionForMouse = grid.CellToWorld(gridPosition);
+            //    isGroundFound = true;
+            //}
+        //}
 
         return isGroundFound;
     }
@@ -219,8 +240,10 @@ public class PlayerScript : MonoBehaviour
 
     private void HandlePreparationPuzzlePiecePlacementEvent()
     {
+        print("inside handlePrepStagePuzzlePiecePlacement");
         if (GameManagerScript.preparationStagePuzzlePiecesLeft > 0)
         {
+            print("inside puzzle piece quantity check");
             PlaceCurrentPuzzlePiece();
         } 
     }
