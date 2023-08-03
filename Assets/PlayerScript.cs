@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     #endregion
 
     private GameObject currentPuzzlePiece;
+    private Collider currentPuzzleObjectCollider;
     private Vector3 lastPositionForMouse;
 
     #region event subscriptions
@@ -96,6 +97,11 @@ public class PlayerScript : MonoBehaviour
 
         // Instantiate the prefab at the mouse's position and make it the current puzzle piece
         currentPuzzlePiece = Instantiate(defaultPuzzlePiece, mousePositionWorldSpace, Quaternion.identity);
+        currentPuzzleObjectCollider = currentPuzzlePiece.GetComponent<Collider>();
+        if (currentPuzzleObjectCollider.enabled == true)
+        {
+            currentPuzzleObjectCollider.enabled = false;
+        }
     }
 
     private void MoveCurrentPuzzlePiece()
@@ -167,7 +173,10 @@ public class PlayerScript : MonoBehaviour
         }
         NavigationBaker.Instance.surfaces.Add(currentPuzzlePiece.GetComponent<NavMeshSurface>());
         NavigationBaker.Instance.BuildNavMesh();
+        currentPuzzleObjectCollider.enabled = true;
         currentPuzzlePiece = null;
+        currentPuzzleObjectCollider = null;
+        
 
         if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
         {
