@@ -49,6 +49,14 @@ public class HUD_Canvas_Script : MonoBehaviour
         preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.totalPreparationStagePuzzlePieces.ToString();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            preparationStageTextGameObject.gameObject.SetActive(!preparationStageTextGameObject.gameObject.activeSelf);
+        }
+    }
+
     #region preparation stage
     private void HandlePreparationPuzzlePiecePlacementEvent()
     {
