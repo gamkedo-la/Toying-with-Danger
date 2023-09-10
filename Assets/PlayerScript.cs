@@ -41,8 +41,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        InstantiatePuzzlePiece();
         NavigationBaker.Instance.BuildNavMesh();
+        InstantiatePuzzlePiece();
+        
         wallZOffset = grid.cellSize.z / 2;
     }
     private void Update()
