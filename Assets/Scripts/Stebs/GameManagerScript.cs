@@ -12,14 +12,14 @@ public class GameManagerScript : MonoBehaviour
     public static GameState currentGameState = GameState.preparationStage;
 
     [Tooltip("The total number of puzzle pieces the player can place during the preparation stage.")]
-    public static int totalPreparationStagePuzzlePieces = 5;
+    public static int totalPreparationStagePuzzlePieces = 10;
 
-    public static int preparationStagePuzzlePiecesLeft = 5;
+    public static int preparationStagePuzzlePiecesLeft = 10;
 
     [Tooltip("The total number of puzzle pieces the player can place during the real time stage.")]
-    public static int totalRealTimeStagePuzzlePieces = 5;
+    public static int totalRealTimeStagePuzzlePieces = 10;
 
-    public static int realTimeStagePuzzlePiecesLeft = 5;
+    public static int realTimeStagePuzzlePiecesLeft = 10;
 
     [Tooltip("The total hit points at the start of the level.")]
     public static int hitPoints = 3;
