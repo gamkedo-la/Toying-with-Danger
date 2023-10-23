@@ -536,7 +536,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 060d6b0e1a36ac04c82c2798fceae0c1, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1da4f7f73fd53094fb554f8d80eaff9a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &499173827
 PrefabInstance:
@@ -657,13 +657,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 561838808}
     m_Modifications:
+    - target: {fileID: 1833184828676438795, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: e20547299de05f444a12287d6c3434bb, type: 2}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_RootOrder
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.76
+      value: 6.02
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -931,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1102378
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1217,7 +1221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.314
+      value: -3.512
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2788,13 +2792,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 367790633}
     m_Modifications:
+    - target: {fileID: 1833184828676438795, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 8de957376a01fee4083b1c23e3dd6ff2, type: 2}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_RootOrder
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04000003
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5440395059426597023, guid: 2456a51d203d0304487a9b966ca3bc1c, type: 3}
       propertyPath: m_LocalPosition.y

@@ -18,7 +18,7 @@ public class EventManagerScript : MonoBehaviour
     public delegate void StartRealTimeStageEventDelegate();
     public delegate void RealTimePuzzlePiecePlacementEventDelegate();
     public delegate void OutOfRealTimePiecesEventDelegate();
-    public delegate void ToyReachedBedEventDelegate();
+    public delegate void ToyReachedBedEventDelegate(GameObject enemy);
     public delegate void GameOverEventDelegate();
     #endregion
 
@@ -36,9 +36,9 @@ public class EventManagerScript : MonoBehaviour
 
     //Event invocations are the one location where an event is triggered, and then the event will call all event methods stored in it.
     #region invocations
-    public static void InvokeToyReachedBedEvent()
+    public static void InvokeToyReachedBedEvent(GameObject enemy)
     {
-        ToyReachedBedEvent.Invoke();
+        ToyReachedBedEvent.Invoke(enemy);
     }
 
     public static void InvokeGameOverEvent()

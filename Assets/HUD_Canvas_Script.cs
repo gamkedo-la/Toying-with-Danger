@@ -89,12 +89,13 @@ public class HUD_Canvas_Script : MonoBehaviour
     }
 
     #region toy reached bed event
-    private void HandleToyReachedBedEvent()
+    private void HandleToyReachedBedEvent(GameObject enemy)
     {
         print("inside handle toy reached bed event");
         DecrementHitPoints();
         UpdateHitPointsText();
         CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate();
+        Destroy(enemy);
     }
 
     private void DecrementHitPoints()

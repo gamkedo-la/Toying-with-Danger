@@ -8,7 +8,7 @@ public class BedDestinationScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            EventManagerScript.InvokeToyReachedBedEvent();
+            EventManagerScript.InvokeToyReachedBedEvent(other.gameObject);
         }
     }
 }
