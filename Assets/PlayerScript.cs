@@ -55,7 +55,6 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            print("recognizing mouseUp");
             if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
             {
                EventManagerScript.InvokePreparationPuzzlePiecePlacementEvent();
@@ -241,10 +240,8 @@ public class PlayerScript : MonoBehaviour
 
     private void HandlePreparationPuzzlePiecePlacementEvent()
     {
-        print("inside handlePrepStagePuzzlePiecePlacement");
         if (GameManagerScript.preparationStagePuzzlePiecesLeft > 0)
         {
-            print("inside puzzle piece quantity check");
             PlaceCurrentPuzzlePiece();
         } 
     }
