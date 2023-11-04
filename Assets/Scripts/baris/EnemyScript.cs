@@ -20,6 +20,10 @@ public class EnemyScript : MonoBehaviour
 
     private bool isEnemyReachedLastDestination = false;
 
+    public NavMeshPathStatus currentPathStatus;
+
+    public int destructionPoints = 1;
+
     #region event subscriptions
 
     #endregion
@@ -31,6 +35,7 @@ public class EnemyScript : MonoBehaviour
     private void Update()
     {
         CheckIfAgentReachedDestination();
+        CheckAgentsPathStatus();
     }
 
     private void CheckIfAgentReachedDestination()
@@ -70,5 +75,21 @@ public class EnemyScript : MonoBehaviour
     {
         if (!isEnemyReachedLastDestination)
             agent.SetDestination(nextDestination);
+    }
+
+    private void CheckAgentsPathStatus()
+    {
+        if (agent.pathStatus == NavMeshPathStatus.PathComplete)
+        {
+            currentPathStatus = NavMeshPathStatus.PathComplete;
+        }
+        else if (agent.pathStatus == NavMeshPathStatus.PathPartial)
+        {
+            currentPathStatus = NavMeshPathStatus.PathPartial;
+        }
+        else if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+        {
+            currentPathStatus = NavMeshPathStatus.PathInvalid;
+        }
     }
 }

@@ -29,8 +29,16 @@ public class NavigationBaker : MonoBehaviour
 
         for (int i = 0; i < surfaces.Count; i++)
         {
+            print("surfaces[i]: " + surfaces[i]);
             surfaces[i].BuildNavMesh();
         }
+    }
+
+    public void HandleWallDestructionEvent(GameObject wallToBeDestroyed)
+    {
+        print("calling handleWallDestructionEvent");
+        Destroy(wallToBeDestroyed);
+        BuildNavMesh();
     }
 
 }
