@@ -26,10 +26,9 @@ public class NavigationBaker : MonoBehaviour
     // Use this for initialization
     public void BuildNavMesh()
     {
-
         for (int i = 0; i < surfaces.Count; i++)
         {
-            print("surfaces[i]: " + surfaces[i]);
+            print("surfaces[i]: " + surfaces.Count);
             surfaces[i].BuildNavMesh();
         }
     }
@@ -37,8 +36,37 @@ public class NavigationBaker : MonoBehaviour
     public void HandleWallDestructionEvent(GameObject wallToBeDestroyed)
     {
         print("calling handleWallDestructionEvent");
+        NavMeshSurface surfacesToRemove = Instance.surfaces.Find(x => x == wallToBeDestroyed.GetComponent<NavMeshSurface>());
+        wallToBeDestroyed.GetComponent<NavMeshSurface>().enabled = false;
+        surfaces.Remove(surfacesToRemove);
         Destroy(wallToBeDestroyed);
         BuildNavMesh();
+
+
+        // TODO: fix the walls disappering bug
+        //Baris, trying out different solutions to the problem.
+        //print("calling handleWallDestructionEvent");
+        //NavMeshSurface surfacesToRemove = Instance.surfaces.Find(x => x == wallToBeDestroyed.GetComponent<NavMeshSurface>());
+        //wallToBeDestroyed.GetComponent<NavMeshSurface>().enabled = false;
+        //wallToBeDestroyed.GetComponent<NavMeshSurface>().RemoveData();
+        //surfaces.Remove(surfacesToRemove);
+        //surfacesToRemove.enabled = false;
+        //surfacesToRemove.RemoveData();
+        //surfacesToRemove.ignoreNavMeshAgent = true;
+        //UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
+        
+        //Destroy(wallToBeDestroyed);
+        //NavMesh.RemoveAllNavMeshData();
+
+        //RebuildNavMeshAfterDelay();
     }
+    //private IEnumerator RebuildNavMeshAfterDelay()
+    //{
+    //    yield return new WaitForSeconds(1f); // Wait for 0.1 seconds
+
+    //    // Rebuild the NavMesh with the remaining surfaces
+    //    RebuildNavMeshAfterDelay();
+    //    BuildNavMesh();
+    //}
 
 }
