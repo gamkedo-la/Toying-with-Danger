@@ -19,7 +19,7 @@ public class HorizontalWallScript : MonoBehaviour
 
             if (hitPoints < 1)
             {
-                NavigationBaker.Instance.HandleWallDestructionEvent(gameObject);
+                EventManagerScript.InvokeToyBlowsUpWallEvent(gameObject);
             }
         }
 

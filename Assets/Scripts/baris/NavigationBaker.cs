@@ -23,24 +23,34 @@ public class NavigationBaker : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    #region
+    private void OnEnable()
+    {
+        EventManagerScript.ToyBlowsUpWallEvent += HandleToyBlowsUpWallEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventManagerScript.ToyBlowsUpWallEvent -= HandleToyBlowsUpWallEvent;
+    }
+    #endregion
+
     // Use this for initialization
     public void BuildNavMesh()
     {
         for (int i = 0; i < surfaces.Count; i++)
         {
-            print("surfaces[i]: " + surfaces.Count);
             surfaces[i].BuildNavMesh();
         }
     }
 
-    public void HandleWallDestructionEvent(GameObject wallToBeDestroyed)
+    public void BlowUpWall(GameObject wallToBeDestroyed)
     {
         print("calling handleWallDestructionEvent");
         NavMeshSurface surfacesToRemove = Instance.surfaces.Find(x => x == wallToBeDestroyed.GetComponent<NavMeshSurface>());
         wallToBeDestroyed.GetComponent<NavMeshSurface>().enabled = false;
         surfaces.Remove(surfacesToRemove);
         Destroy(wallToBeDestroyed);
-        BuildNavMesh();
 
 
         // TODO: fix the walls disappering bug
@@ -60,13 +70,16 @@ public class NavigationBaker : MonoBehaviour
 
         //RebuildNavMeshAfterDelay();
     }
-    //private IEnumerator RebuildNavMeshAfterDelay()
-    //{
-    //    yield return new WaitForSeconds(1f); // Wait for 0.1 seconds
+    private IEnumerator RebuildNavMeshAfterDelay(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime); // Wait for 0.1 seconds
 
-    //    // Rebuild the NavMesh with the remaining surfaces
-    //    RebuildNavMeshAfterDelay();
-    //    BuildNavMesh();
-    //}
+        BuildNavMesh();
+    }
 
+    public void HandleToyBlowsUpWallEvent(GameObject wallToBeDestroyed)
+    {
+        BlowUpWall(wallToBeDestroyed);
+        StartCoroutine(RebuildNavMeshAfterDelay(0.5f));
+    }
 }

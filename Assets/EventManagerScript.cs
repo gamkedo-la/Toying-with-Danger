@@ -18,6 +18,7 @@ public class EventManagerScript : MonoBehaviour
     public delegate void StartRealTimeStageEventDelegate();
     public delegate void RealTimePuzzlePiecePlacementEventDelegate();
     public delegate void OutOfRealTimePiecesEventDelegate();
+    public delegate void ToyBlowsUpWallEventDelegate(GameObject wallToBeDestroyed);
     public delegate void ToyReachedBedEventDelegate(GameObject enemy);
     public delegate void GameOverEventDelegate();
     #endregion
@@ -30,6 +31,7 @@ public class EventManagerScript : MonoBehaviour
     public static event StartRealTimeStageEventDelegate StartRealTimeStageEvent;
     public static event RealTimePuzzlePiecePlacementEventDelegate RealTimePuzzlePiecePlacementEvent;
     public static event OutOfRealTimePiecesEventDelegate OutOfRealTimePiecesEvent;
+    public static event ToyBlowsUpWallEventDelegate ToyBlowsUpWallEvent;
     public static event ToyReachedBedEventDelegate ToyReachedBedEvent;
     public static event GameOverEventDelegate GameOverEvent;
     #endregion
@@ -69,6 +71,11 @@ public class EventManagerScript : MonoBehaviour
     public static void InvokeOutOfRealTimePiecesEvent()
     {
         OutOfRealTimePiecesEvent.Invoke();
+    }
+
+    public static void InvokeToyBlowsUpWallEvent(GameObject wallToBeDestroyed)
+    {
+        ToyBlowsUpWallEvent.Invoke(wallToBeDestroyed);
     }
     #endregion
 }
