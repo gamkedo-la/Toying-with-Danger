@@ -20,13 +20,16 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentLevelTimerDuration -= Time.deltaTime;
-
-        canvasHUD_TimerTextGameObject.text = "Time left: " + currentLevelTimerDuration.ToString();
-
-        if (currentLevelTimerDuration <= 0)
+        if (currentLevelTimerDuration > 0)
+        {
+            currentLevelTimerDuration -= Time.deltaTime;
+            
+        }
+        else
         {
             currentLevelTimerDuration = 0;
         }
+
+        canvasHUD_TimerTextGameObject.text = "Time left: " + currentLevelTimerDuration.ToString();
     }
 }

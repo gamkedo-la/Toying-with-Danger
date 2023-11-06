@@ -25,7 +25,7 @@ public class GameManagerScript : MonoBehaviour
     public static int hitPoints = 3;
 
     [Tooltip("Total amount of time for the level.")]
-    public static float totalLevelTime = 30.0f;
+    public static float totalLevelTime = 15.0f;
 
     #endregion
 

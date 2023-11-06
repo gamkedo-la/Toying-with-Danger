@@ -118,7 +118,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 0.75
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -144,6 +144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHealth: 3
   destinationReachedTreshold: 0.3
+  currentPathStatus: 0
+  destructionPoints: 1
 --- !u!54 &7060907375085302250
 Rigidbody:
   m_ObjectHideFlags: 0
