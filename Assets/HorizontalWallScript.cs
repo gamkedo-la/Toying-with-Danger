@@ -13,7 +13,6 @@ public class HorizontalWallScript : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyScript>().currentPathStatus == NavMeshPathStatus.PathPartial &&
             collision.gameObject.GetComponent<EnemyScript>().destructionPoints > 0)
         {
-            print("inside collision check if statement");
             hitPoints--;
             collision.gameObject.GetComponent<EnemyScript>().destructionPoints--;
 

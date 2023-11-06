@@ -46,7 +46,6 @@ public class NavigationBaker : MonoBehaviour
 
     public void BlowUpWall(GameObject wallToBeDestroyed)
     {
-        print("calling handleWallDestructionEvent");
         NavMeshSurface surfacesToRemove = Instance.surfaces.Find(x => x == wallToBeDestroyed.GetComponent<NavMeshSurface>());
         wallToBeDestroyed.GetComponent<NavMeshSurface>().enabled = false;
         surfaces.Remove(surfacesToRemove);
