@@ -195,6 +195,7 @@ public class PlayerScript : MonoBehaviour
         NavigationBaker.Instance.surfaces.Add(currentPuzzlePiece.GetComponent<NavMeshSurface>());
         NavigationBaker.Instance.BuildNavMesh();
         currentPuzzleObjectCollider.enabled = true;
+        currentPuzzlePiece.layer = 8; //change from unplaced layer to placed layer
         currentPuzzlePiece = null;
         currentPuzzleObjectCollider = null;
         
