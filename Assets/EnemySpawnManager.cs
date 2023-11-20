@@ -45,9 +45,11 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        Vector3 spawnPositionVector3 = new Vector3(transform.position.x, 0.2f, transform.position.z);
+
         if (totalNumberOfEnemiesToSpawn > 0)
         {
-            GameObject enemy = GameObject.Instantiate(enemyToSpawn, transform.position, Quaternion.identity, transform);
+            GameObject enemy = GameObject.Instantiate(enemyToSpawn, spawnPositionVector3, Quaternion.identity, transform);
             enemy.GetComponent<EnemyScript>().SetDestinationObject(enemyDestinations);
             totalNumberOfEnemiesToSpawn--;
             timeSinceLastEnemySpawned = 0;

@@ -12,6 +12,9 @@ public class PlayerScript : MonoBehaviour
 
     #region cached references
     [SerializeField] GameObject defaultPuzzlePiece;
+    private Vector3 wallSizeVector3;
+    private LayerMask unplacedWallLayerMask; //to be used to ignore the wall piece the player is trying to place
+    private bool canPlaceCurrentPieceInCurrentGridCell = false;
 
     MeshRenderer mouseIndicatorsMeshRenderer;
 
@@ -45,7 +48,11 @@ public class PlayerScript : MonoBehaviour
         InstantiatePuzzlePiece();
         
         wallZOffset = grid.cellSize.z / 2;
+        wallSizeVector3 = defaultPuzzlePiece.GetComponent<Renderer>().bounds.size;
+        int unplacedWallLayer = LayerMask.NameToLayer("UnplacedWall");
+        unplacedWallLayerMask = ~(1 << unplacedWallLayerMask);
     }
+
     private void Update()
     {
         if (currentPuzzlePiece != null)
@@ -64,6 +71,15 @@ public class PlayerScript : MonoBehaviour
                 EventManagerScript.InvokeRealTimePuzzlePiecePlacementEvent();
             }
         }
+    }
+
+    private bool CanPlaceWall(Vector3 gridCellCenterVector3)
+    {
+        Vector3 halfExtentsVector3 = wallSizeVector3 * 0.45f;
+        Vector3 overlapBoxCenterVector3 = new Vector3(gridCellCenterVector3.x, gridCellCenterVector3.y + (wallSizeVector3.y * 0.5f), gridCellCenterVector3.z);
+
+        Collider[] arrayOfCollidersAboveGridCell = Physics.OverlapBox(overlapBoxCenterVector3, halfExtentsVector3, Quaternion.identity, unplacedWallLayerMask);
+        return arrayOfCollidersAboveGridCell.Length == 0;
     }
 
     private void HandleStartRealTimeStageEvent()
@@ -132,6 +148,17 @@ public class PlayerScript : MonoBehaviour
 
         // Set the puzzle piece's position towards the mouse cursor smoothly
         currentPuzzlePiece.transform.position = mousePositionWorldSpace;
+
+        if (CanPlaceWall(mousePositionWorldSpace))
+        {
+            canPlaceCurrentPieceInCurrentGridCell = true;
+            print("can place current puzzle piece");
+        }
+        else
+        {
+            canPlaceCurrentPieceInCurrentGridCell = false;
+            print("can't place current puzzle piece");
+        }
     }
 
     private bool GetSelectedMapPosition()
@@ -188,10 +215,12 @@ public class PlayerScript : MonoBehaviour
 
     private void PlaceCurrentPuzzlePiece()
     {
-        if (!GetSelectedMapPosition())
+        if (!GetSelectedMapPosition() || !canPlaceCurrentPieceInCurrentGridCell)
         {
             return;
         }
+
+
         NavigationBaker.Instance.surfaces.Add(currentPuzzlePiece.GetComponent<NavMeshSurface>());
         NavigationBaker.Instance.BuildNavMesh();
         currentPuzzleObjectCollider.enabled = true;
