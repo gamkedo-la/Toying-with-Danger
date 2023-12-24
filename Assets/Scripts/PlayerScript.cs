@@ -242,6 +242,7 @@ public class PlayerScript : MonoBehaviour
     private void PlacePreparationStagePuzzlePiece()
     {
         GameManagerScript.preparationStagePuzzlePiecesLeft--;
+        EventManagerScript.InvokePreparationRemainingWallNumberChangedEvent();
 
         if (GameManagerScript.preparationStagePuzzlePiecesLeft == 0)
         {
@@ -257,6 +258,8 @@ public class PlayerScript : MonoBehaviour
     private void PlaceRealTimeStagePuzzlePiece()
     {
         GameManagerScript.realTimeStagePuzzlePiecesLeft--;
+        EventManagerScript.InvokeRealTimeRemainingWallNumberChangedEvent();
+
         if (GameManagerScript.realTimeStagePuzzlePiecesLeft == 0)
         {
             EventManagerScript.InvokeOutOfRealTimePiecesEvent();

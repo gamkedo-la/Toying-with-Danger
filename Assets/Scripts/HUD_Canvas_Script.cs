@@ -22,10 +22,10 @@ public class HUD_Canvas_Script : MonoBehaviour
     #region event subscriptions
     private void OnEnable()
     {
-        EventManagerScript.PreparationPuzzlePiecePlacementEvent += HandlePreparationPuzzlePiecePlacementEvent;
+        EventManagerScript.PreparationRemainingWallNumberChangedEvent += HandlePreparationRemainingWallNumberChangedEvent;
         EventManagerScript.OutOfPreparationPiecesEvent += HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent += HandleStartRealTimeStageEvent;
-        EventManagerScript.RealTimePuzzlePiecePlacementEvent += HandleRealTimePuzzlePiecePlacementEvent;
+        EventManagerScript.RealTimeRemainingWallNumberChangedEvent += HandleRealTimeRemainingWallNumberChangedEvent;
         EventManagerScript.OutOfRealTimePiecesEvent += HandleOutOfRealTimePiecesEvent;
         EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent += HandleGameOverEvent;
@@ -33,10 +33,10 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManagerScript.PreparationPuzzlePiecePlacementEvent -= HandlePreparationPuzzlePiecePlacementEvent;
+        EventManagerScript.PreparationRemainingWallNumberChangedEvent -= HandlePreparationRemainingWallNumberChangedEvent;
         EventManagerScript.OutOfPreparationPiecesEvent -= HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent -= HandleStartRealTimeStageEvent;
-        EventManagerScript.RealTimePuzzlePiecePlacementEvent -= HandleRealTimePuzzlePiecePlacementEvent;
+        EventManagerScript.RealTimeRemainingWallNumberChangedEvent -= HandleRealTimeRemainingWallNumberChangedEvent;
         EventManagerScript.OutOfRealTimePiecesEvent -= HandleOutOfRealTimePiecesEvent;
         EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent -= HandleGameOverEvent;
@@ -58,7 +58,7 @@ public class HUD_Canvas_Script : MonoBehaviour
     }
 
     #region preparation stage
-    private void HandlePreparationPuzzlePiecePlacementEvent()
+    private void HandlePreparationRemainingWallNumberChangedEvent()
     {
         preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.preparationStagePuzzlePiecesLeft;
     }
@@ -77,7 +77,7 @@ public class HUD_Canvas_Script : MonoBehaviour
         preparationStageTextGameObject.text = "You now have some more pieces. Stop the toys!";
     }
 
-    private void HandleRealTimePuzzlePiecePlacementEvent()
+    private void HandleRealTimeRemainingWallNumberChangedEvent()
     {
         preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.realTimeStagePuzzlePiecesLeft;
     }
