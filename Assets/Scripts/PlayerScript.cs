@@ -106,7 +106,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         // Apply clamping to the Y-coordinate
-        mousePositionWorldSpace.y = 0.5f;
+        mousePositionWorldSpace.y = -10f;
         mousePositionWorldSpace.z += wallZOffset;
 
         //// Get the mouse position in screen space
@@ -142,7 +142,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         // Apply clamping to the Y-coordinate
-        mousePositionWorldSpace.y = 0.5f;
+        mousePositionWorldSpace.y = 0f;
         mousePositionWorldSpace.z += wallZOffset;
 
 
