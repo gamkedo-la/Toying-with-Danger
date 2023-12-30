@@ -23,6 +23,7 @@ public class PlayerScript : MonoBehaviour
 
     private GameObject currentPuzzlePiece;
     private Collider currentPuzzleObjectCollider;
+    private NavMeshSurface currentPuzzleObjectNavMeshSurface;
     private Vector3 lastPositionForMouse;
     private float wallZOffset;
 
@@ -84,6 +85,11 @@ public class PlayerScript : MonoBehaviour
 
     private void HandleStartRealTimeStageEvent()
     {
+        if (currentPuzzlePiece is not null)
+        {
+            Destroy(currentPuzzlePiece);
+            currentPuzzlePiece = null;
+        }
         InstantiatePuzzlePiece();
     }
 
@@ -118,9 +124,11 @@ public class PlayerScript : MonoBehaviour
         // Instantiate the prefab at the mouse's position and make it the current puzzle piece
         currentPuzzlePiece = Instantiate(defaultPuzzlePiece, mousePositionWorldSpace, Quaternion.identity);
         currentPuzzleObjectCollider = currentPuzzlePiece.GetComponent<Collider>();
+        currentPuzzleObjectNavMeshSurface = currentPuzzlePiece.GetComponent<NavMeshSurface>();
         if (currentPuzzleObjectCollider.enabled == true)
         {
             currentPuzzleObjectCollider.enabled = false;
+            currentPuzzleObjectNavMeshSurface.enabled = false;
         }
     }
 
@@ -224,10 +232,13 @@ public class PlayerScript : MonoBehaviour
         NavigationBaker.Instance.surfaces.Add(currentPuzzlePiece.GetComponent<NavMeshSurface>());
         NavigationBaker.Instance.BuildNavMesh();
         currentPuzzleObjectCollider.enabled = true;
+        currentPuzzleObjectNavMeshSurface.enabled = true;
         currentPuzzlePiece.layer = 8; //change from unplaced layer to placed layer
         currentPuzzlePiece = null;
         currentPuzzleObjectCollider = null;
-        
+        currentPuzzleObjectNavMeshSurface = null;
+
+
 
         if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
         {
