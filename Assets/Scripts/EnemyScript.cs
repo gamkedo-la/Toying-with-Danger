@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -79,17 +80,26 @@ public class EnemyScript : MonoBehaviour
 
     private void CheckAgentsPathStatus()
     {
-        if (agent.pathStatus == NavMeshPathStatus.PathComplete)
+        var path = new NavMeshPath();
+        if (agent.destination != null && agent.hasPath)
         {
-            currentPathStatus = NavMeshPathStatus.PathComplete;
-        }
-        else if (agent.pathStatus == NavMeshPathStatus.PathPartial)
-        {
-            currentPathStatus = NavMeshPathStatus.PathPartial;
-        }
-        else if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
-        {
-            currentPathStatus = NavMeshPathStatus.PathInvalid;
+            if (agent.CalculatePath(agent.destination, path))
+            {
+                switch (path.status)
+                {
+                    case NavMeshPathStatus.PathComplete:
+                        //no problem here
+                        break;
+                    case NavMeshPathStatus.PathPartial:
+                        EventManagerScript.InvokeGameOverEvent();
+                        //this means path is not possible to reach, we end game here.
+                        break;
+                    default:
+                        //this means path is not possible to reach, we end game here.
+                        EventManagerScript.InvokeGameOverEvent();
+                        break;
+                }
+            }
         }
     }
 }

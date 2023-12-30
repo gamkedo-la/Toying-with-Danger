@@ -125,7 +125,7 @@ NavMeshAgent:
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 2
   m_BaseOffset: 0.5
   m_WalkableMask: 5
@@ -145,7 +145,7 @@ MonoBehaviour:
   PlayerHealth: 3
   destinationReachedTreshold: 0.3
   currentPathStatus: 0
-  destructionPoints: 1
+  destructionPoints: 0
 --- !u!54 &7060907375085302250
 Rigidbody:
   m_ObjectHideFlags: 0

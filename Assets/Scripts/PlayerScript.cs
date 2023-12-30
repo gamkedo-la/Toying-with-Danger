@@ -160,12 +160,12 @@ public class PlayerScript : MonoBehaviour
         if (CanPlaceWall(mousePositionWorldSpace))
         {
             canPlaceCurrentPieceInCurrentGridCell = true;
-            print("can place current puzzle piece");
+            //print("can place current puzzle piece");
         }
         else
         {
             canPlaceCurrentPieceInCurrentGridCell = false;
-            print("can't place current puzzle piece");
+            //print("can't place current puzzle piece");
         }
     }
 
