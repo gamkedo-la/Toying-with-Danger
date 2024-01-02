@@ -71,7 +71,7 @@ public class GameManagerScript : MonoBehaviour
         GameManagerScript.currentGameState = GameManagerScript.GameState.realTimeStage;
     }
 
-    private void HandleGameOverEvent()
+    private void HandleGameOverEvent(GameOverType gameOverType)
     {
         currentGameState = GameState.gameOver;
     }

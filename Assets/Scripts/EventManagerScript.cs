@@ -20,7 +20,7 @@ public class EventManagerScript : MonoBehaviour
     public delegate void OutOfRealTimePiecesEventDelegate();
     public delegate void ToyBlowsUpWallEventDelegate(GameObject wallToBeDestroyed);
     public delegate void ToyReachedBedEventDelegate(GameObject enemy);
-    public delegate void GameOverEventDelegate();
+    public delegate void GameOverEventDelegate(GameOverType gameOverType);
     public delegate void PreparationRemainingWallNumberChangedEventDelegate();
     public delegate void RealTimeRemainingWallNumberChangedEventDelegate();
     #endregion
@@ -47,9 +47,9 @@ public class EventManagerScript : MonoBehaviour
         ToyReachedBedEvent.Invoke(enemy);
     }
 
-    public static void InvokeGameOverEvent()
+    public static void InvokeGameOverEvent(GameOverType gameOverType)
     {
-        GameOverEvent.Invoke();
+        GameOverEvent.Invoke(gameOverType);
     }
 
     public static void InvokeStartRealTimeStageEvent()

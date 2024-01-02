@@ -91,12 +91,12 @@ public class EnemyScript : MonoBehaviour
                         //no problem here
                         break;
                     case NavMeshPathStatus.PathPartial:
-                        EventManagerScript.InvokeGameOverEvent();
+                        EventManagerScript.InvokeGameOverEvent(GameOverType.NoPathAvailableForEnemy);
                         //this means path is not possible to reach, we end game here.
                         break;
                     default:
                         //this means path is not possible to reach, we end game here.
-                        EventManagerScript.InvokeGameOverEvent();
+                        EventManagerScript.InvokeGameOverEvent(GameOverType.NoPathAvailableForEnemy);
                         break;
                 }
             }

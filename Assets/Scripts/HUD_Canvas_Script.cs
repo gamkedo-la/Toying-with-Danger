@@ -110,7 +110,7 @@ public class HUD_Canvas_Script : MonoBehaviour
     {
         if (GameManagerScript.hitPoints == 0)
         {
-            EventManagerScript.InvokeGameOverEvent();
+            EventManagerScript.InvokeGameOverEvent(GameOverType.healthReachedZero);
         }
     }
 
@@ -121,9 +121,20 @@ public class HUD_Canvas_Script : MonoBehaviour
     #endregion
     #endregion
 
-    private void HandleGameOverEvent()
+    private void HandleGameOverEvent(GameOverType gameOverType)
     {
-        notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "Game Over";
+        switch (gameOverType)
+        {
+            case GameOverType.healthReachedZero:
+                notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "Game Over. Your Health Reached Zero";
+                break;
+            case GameOverType.NoPathAvailableForEnemy:
+                notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "Game Over. You cannot block enemies path entirely";
+                break;
+            default:
+                break;
+        }
+        
         notificationTextGameObject.SetActive(true);
     }
 }
