@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarisTowerDetectionScript : MonoBehaviour
+public class TowerDetectionScript : MonoBehaviour
 {
 
     public float DetectionRadius;
@@ -36,7 +36,7 @@ public class BarisTowerDetectionScript : MonoBehaviour
             }
         }
 
-        return (closestObject);
+        return closestObject;
     }
     private void OnTriggerEnter(Collider other)
     {

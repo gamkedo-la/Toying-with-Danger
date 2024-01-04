@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarisTowerFireScript : MonoBehaviour
+public class TowerFireScript : MonoBehaviour
 {
     public Transform firePosition;
     public GameObject projectilePrefab;
-    public BarisTowerDetectionScript detectionScript;
+    public TowerDetectionScript detectionScript;
 
     public float rate;
     public float delta;
@@ -25,9 +25,14 @@ public class BarisTowerFireScript : MonoBehaviour
     }
     public void FireProjectile()
     {
-        if (detectionScript.enemies.Count > 0)
+        if (detectionScript.GetClosestTarget() != null)
         {
-            detectionScript.enemies.RemoveAt(0);
-        }       
+            Debug.Log("firing at enemy " + detectionScript.GetClosestTarget().name);
+        }
+        
+        //if (detectionScript.enemies.Count > 0)
+        //{
+        //    detectionScript.enemies.RemoveAt(0);
+        //}       
     }
 }

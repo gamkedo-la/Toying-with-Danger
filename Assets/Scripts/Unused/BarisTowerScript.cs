@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarisTowerScript : MonoBehaviour
 {
     public ChristianCannonRotation cannonRotation;
-    public BarisTowerDetectionScript towerRadiusDetection;
+    public TowerDetectionScript towerRadiusDetection;
 
     private void Update()
     {
