@@ -49,7 +49,7 @@ public class PlayerScript : MonoBehaviour
         InstantiatePuzzlePiece();
         
         wallZOffset = grid.cellSize.z / 2;
-        wallSizeVector3 = defaultPuzzlePiece.GetComponent<Renderer>().bounds.size;
+        wallSizeVector3 = defaultPuzzlePiece.GetComponentInChildren<Renderer>().bounds.size;
         int unplacedWallLayer = LayerMask.NameToLayer("UnplacedWall");
         unplacedWallLayerMask = ~(1 << unplacedWallLayerMask);
     }
