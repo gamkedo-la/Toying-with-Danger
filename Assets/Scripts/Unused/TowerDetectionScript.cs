@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,33 +7,39 @@ public class TowerDetectionScript : MonoBehaviour
 
     public float DetectionRadius;
     public SphereCollider sphereCollider;
-    public List<EnemyScript> enemies;
+    public List<GameObject> enemies;
+
+    private void OnEnable()
+    {
+        EventManagerScript.EnemyGotDestroyedEvent += HandleEnemyGotDestroyedEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventManagerScript.EnemyGotDestroyedEvent -= HandleEnemyGotDestroyedEvent;
+    }
 
     private void OnValidate()
     {
         sphereCollider.radius = DetectionRadius;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
+
+    private void HandleEnemyGotDestroyedEvent(GameObject enemy)
+    {
+        enemies.Remove(enemy);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public GameObject GetClosestTarget()
     {
         GameObject closestObject = null;
         float distance = float.MaxValue;
 
-        foreach (EnemyScript enemy in enemies)
+        foreach (GameObject enemy in enemies)
         {
             if (Vector3.Distance(transform.position, enemy.transform.position) < distance)
             {
-                closestObject = enemy.gameObject;
+                closestObject = enemy;
             }
         }
 
@@ -42,14 +49,14 @@ public class TowerDetectionScript : MonoBehaviour
     {
         if (other.gameObject.GetComponent<EnemyScript>() != null)
         {
-            enemies.Add(other.gameObject.GetComponent<EnemyScript>());
+            enemies.Add(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<EnemyScript>() != null)
         {
-            enemies.Remove(other.gameObject.GetComponent<EnemyScript>());
+            enemies.Remove(other.gameObject);
         }
     }
 }

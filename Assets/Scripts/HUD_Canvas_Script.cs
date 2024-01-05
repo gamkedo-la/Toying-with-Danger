@@ -94,6 +94,7 @@ public class HUD_Canvas_Script : MonoBehaviour
         DecrementHitPoints();
         UpdateHitPointsText();
         CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate();
+        EventManagerScript.InvokeEnemyGotDestroyedEvent(enemy);
         Destroy(enemy);
     }
 

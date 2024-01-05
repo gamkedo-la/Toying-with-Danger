@@ -23,6 +23,7 @@ public class EventManagerScript : MonoBehaviour
     public delegate void GameOverEventDelegate(GameOverType gameOverType);
     public delegate void PreparationRemainingWallNumberChangedEventDelegate();
     public delegate void RealTimeRemainingWallNumberChangedEventDelegate();
+    public delegate void EnemyGotDestroyedEventDelegate(GameObject enemy);
     #endregion
 
     //events are specific occurrences that happen in the game. For example, GameOverEvent. When the game over event is called, perhaps a notification manager will display "game over", the audio manager will
@@ -38,6 +39,7 @@ public class EventManagerScript : MonoBehaviour
     public static event GameOverEventDelegate GameOverEvent;
     public static event PreparationRemainingWallNumberChangedEventDelegate PreparationRemainingWallNumberChangedEvent;
     public static event RealTimeRemainingWallNumberChangedEventDelegate RealTimeRemainingWallNumberChangedEvent;
+    public static event EnemyGotDestroyedEventDelegate EnemyGotDestroyedEvent;
     #endregion
 
     //Event invocations are the one location where an event is triggered, and then the event will call all event methods stored in it.
@@ -89,6 +91,10 @@ public class EventManagerScript : MonoBehaviour
     public static void InvokeRealTimeRemainingWallNumberChangedEvent()
     {
         RealTimeRemainingWallNumberChangedEvent.Invoke();
+    }
+    public static void InvokeEnemyGotDestroyedEvent(GameObject enemy)
+    {
+        EnemyGotDestroyedEvent.Invoke(enemy);
     }
     #endregion
 }
