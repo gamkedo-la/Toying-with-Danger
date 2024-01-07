@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerFireScript : MonoBehaviour
+public class TowerFireScript : TowerAbility
 {
     public Transform firePosition;
     public GameObject projectilePrefab;
-    public TowerDetectionScript detectionScript;
 
     public float rate;
     public float delta;
@@ -25,14 +24,9 @@ public class TowerFireScript : MonoBehaviour
     }
     public void FireProjectile()
     {
-        if (detectionScript.GetClosestTarget() != null)
+        if (GetClosestTarget() != null)
         {
-            Debug.Log("firing at enemy " + detectionScript.GetClosestTarget().name);
+            Debug.Log("firing at enemy " + GetClosestTarget().name);
         }
-        
-        //if (detectionScript.enemies.Count > 0)
-        //{
-        //    detectionScript.enemies.RemoveAt(0);
-        //}       
     }
 }

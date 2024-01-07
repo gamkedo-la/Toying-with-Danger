@@ -4,36 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-//force a sphere collider for effects radius
-[RequireComponent(typeof(SphereCollider))]
-public class TowerSlowAbility : MonoBehaviour
+public class TowerSlowAbility : TowerAbility
 {
-    public List<EnemyScript> enemiesInRadius;
     public float slowAmount;
-    SphereCollider effectRadius;
-
-    private void Awake()
-    {
-        //localize sphere collider
-        effectRadius = GetComponent<SphereCollider>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     /// <summary>
     /// This block will handle all the logic for removing the enemy
     /// </summary>
     /// <param name="enemy"></param>
     /// <returns></returns>
-    bool RemoveEnemy(EnemyScript enemy)
+    protected override bool RemoveEnemy(EnemyScript enemy)
     {
         if (enemiesInRadius.Contains(enemy))
         {
@@ -54,7 +33,7 @@ public class TowerSlowAbility : MonoBehaviour
     /// </summary>
     /// <param name="enemy"></param>
     /// <returns></returns>
-    bool AddEnemy(EnemyScript enemy)
+    protected override bool AddEnemy(EnemyScript enemy)
     {
         //Check if enemy has already been added to the list
         if (!enemiesInRadius.Contains(enemy))
@@ -69,35 +48,5 @@ public class TowerSlowAbility : MonoBehaviour
         }
 
         return true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<EnemyScript>() != null)
-        {
-            //localize enemy in radius
-            var enemyScript = other.gameObject.GetComponent<EnemyScript>();
-            
-            //check if enemy was succesfully added to enemy list
-            if (AddEnemy(enemyScript))
-            {
-
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.GetComponent<EnemyScript>() != null)
-        {
-            //localize enemy in radius
-            var enemyScript = other.gameObject.GetComponent<EnemyScript>();
-
-            //check if enemy was succesfully removed to enemy list
-            if (RemoveEnemy(enemyScript))
-            {
-
-            }
-        }
     }
 }
