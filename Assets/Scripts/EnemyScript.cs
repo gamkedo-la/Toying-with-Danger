@@ -26,8 +26,18 @@ public class EnemyScript : MonoBehaviour
     public int destructionPoints = 1;
 
     #region event subscriptions
+    private void OnEnable()
+    {
+        EventManagerScript.GameOverEvent += HandleGameOverEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventManagerScript.GameOverEvent -= HandleGameOverEvent;
+    }
 
     #endregion
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -35,8 +45,11 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
-        CheckIfAgentReachedDestination();
-        CheckAgentsPathStatus();
+        if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
+        {
+            CheckIfAgentReachedDestination();
+            CheckAgentsPathStatus();
+        }
     }
 
     private void CheckIfAgentReachedDestination()
@@ -101,5 +114,11 @@ public class EnemyScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void HandleGameOverEvent(GameOverType gameOverType)
+    {
+        print("enemy script invoking game over handling");
+        agent.destination = agent.transform.position;
     }
 }

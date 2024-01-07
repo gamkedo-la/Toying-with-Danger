@@ -5,5 +5,6 @@ using UnityEngine;
 public enum GameOverType
 {
     healthReachedZero,
-    NoPathAvailableForEnemy
+    NoPathAvailableForEnemy,
+    GameWon
 }

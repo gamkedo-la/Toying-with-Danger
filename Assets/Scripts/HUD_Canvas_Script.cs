@@ -132,6 +132,9 @@ public class HUD_Canvas_Script : MonoBehaviour
             case GameOverType.NoPathAvailableForEnemy:
                 notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "Game Over. You cannot block enemies path entirely";
                 break;
+            case GameOverType.GameWon:
+                notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "You win! Go back to bed and get a good night's sleep!";
+                break;
             default:
                 break;
         }
