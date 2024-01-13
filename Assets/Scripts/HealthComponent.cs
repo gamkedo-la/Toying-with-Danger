@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    public delegate void HealthHitZero();
-    public HealthHitZero healthHitZero;
+    //public delegate void HealthHitZero();
+    //public HealthHitZero healthHitZero;
+    [SerializeField]private float startingHealth;
+
+    private void Awake()
+    {
+        currentHealth = startingHealth;
+    }
     public float CurrentHealth 
     {
         get 
@@ -17,7 +23,9 @@ public class HealthComponent : MonoBehaviour
             currentHealth = value;
             if(currentHealth <=0 )
             {
-                healthHitZero.Invoke();
+                //healthHitZero.Invoke();
+                EventManagerScript.InvokeEnemyGotDestroyedEvent(gameObject);
+                Destroy(gameObject);
             }
         }
     }

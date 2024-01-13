@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerFireScript : TowerAbility
+public class FireTowerScript : TowerAbility
 {
     public Transform firePosition;
     public GameObject projectilePrefab;
@@ -27,6 +27,8 @@ public class TowerFireScript : TowerAbility
         if (GetClosestTarget() != null)
         {
             Debug.Log("firing at enemy " + GetClosestTarget().name);
+            TowerProjectileScript projectile = Instantiate(projectilePrefab, transform.position, transform.rotation).GetComponent<TowerProjectileScript>();
+            projectile.target = GetClosestTarget();
         }
     }
 }
