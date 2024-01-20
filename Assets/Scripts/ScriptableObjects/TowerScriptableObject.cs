@@ -5,4 +5,5 @@ using UnityEngine;
 public class TowerScriptableObject : ScriptableObject
 {
     public GameObject prefab;
+    public float towerRadius;
 }

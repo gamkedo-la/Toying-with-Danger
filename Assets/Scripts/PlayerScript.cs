@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
     private NavMeshSurface currentPuzzleObjectNavMeshSurface;
     private Vector3 lastPositionForMouse;
     private float wallZOffset;
+    private PuzzlePieceType currentPuzzlePieceType = PuzzlePieceType.Wall;
 
     #region event subscriptions
     private void OnEnable()
@@ -71,6 +72,10 @@ public class PlayerScript : MonoBehaviour
             {
                 EventManagerScript.InvokeRealTimePuzzlePiecePlacementEvent();
             }
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            currentPuzzlePieceType = currentPuzzlePieceType == PuzzlePieceType.Wall ? PuzzlePieceType.Tower : PuzzlePieceType.Wall;
         }
     }
 
