@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public class TowerAbility : MonoBehaviour
 {
     public List<EnemyScript> enemiesInRadius;
+    [System.NonSerialized]
     public float DetectionRadius;
     private SphereCollider sphereCollider;
 

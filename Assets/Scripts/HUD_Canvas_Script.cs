@@ -46,7 +46,7 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void Start()
     {
         hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
-        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.totalPreparationStagePuzzlePieces.ToString();
+        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.totalPreparationWalls.ToString();
     }
 
     private void Update()
@@ -60,7 +60,7 @@ public class HUD_Canvas_Script : MonoBehaviour
     #region preparation stage
     private void HandlePreparationRemainingWallNumberChangedEvent()
     {
-        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.preparationStagePuzzlePiecesLeft;
+        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.preparationStageWallsLeft;
     }
 
     private void HandleOutOfPreparationPiecesEvent()
@@ -73,13 +73,13 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void HandleStartRealTimeStageEvent()
     {
         timerTextGameObject.gameObject.SetActive(true);
-        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.totalRealTimeStagePuzzlePieces;
+        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.totalRealTimeStageWalls;
         preparationStageTextGameObject.text = "You now have some more pieces. Stop the toys!";
     }
 
     private void HandleRealTimeRemainingWallNumberChangedEvent()
     {
-        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.realTimeStagePuzzlePiecesLeft;
+        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.realTimeStageWallsLeft;
     }
 
     private void HandleOutOfRealTimePiecesEvent()
