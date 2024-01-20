@@ -20,11 +20,11 @@ public class DebugManagerScript : MonoBehaviour
             switch (GameManagerScript.currentGameState)
             {
                 case GameManagerScript.GameState.preparationStage:
-                    GameManagerScript.preparationStagePuzzlePiecesLeft += 1;
+                    GameManagerScript.preparationStageWallsLeft += 1;
                     EventManagerScript.InvokePreparationRemainingWallNumberChangedEvent();
                     break;
                 case GameManagerScript.GameState.realTimeStage:
-                    GameManagerScript.realTimeStagePuzzlePiecesLeft += 1;
+                    GameManagerScript.realTimeStageWallsLeft += 1;
                     EventManagerScript.InvokeRealTimeRemainingWallNumberChangedEvent();
                     break;
                 case GameManagerScript.GameState.gameOver:
