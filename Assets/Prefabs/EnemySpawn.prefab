@@ -137,7 +137,7 @@ Transform:
   m_Children:
   - {fileID: 4130799071954179270}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7877641218576157987
 MonoBehaviour:
@@ -153,5 +153,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalNumberOfEnemiesToSpawn: 5
   spawnInterval: 2
-  enemyToSpawn: {fileID: 5505051016116033841, guid: db8e097d9e561d64bbeee81d17325d98, type: 3}
+  enemyToSpawn: {fileID: 5463541718867640048, guid: 216d28c7d0186ba459d28d78b4623cb8, type: 3}
   enemyDestinations: {fileID: 0}
