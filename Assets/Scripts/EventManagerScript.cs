@@ -23,6 +23,8 @@ public class EventManagerScript : MonoBehaviour
     public delegate void GameOverEventDelegate(GameOverType gameOverType);
     public delegate void PreparationRemainingWallNumberChangedEventDelegate();
     public delegate void RealTimeRemainingWallNumberChangedEventDelegate();
+    public delegate void PreparationRemainingTowerNumberChangedEventDelegate();
+    public delegate void RealTimeRemainingTowerNumberChangedEventDelegate();
     public delegate void EnemyGotDestroyedEventDelegate(GameObject enemy);
     #endregion
 
@@ -39,6 +41,8 @@ public class EventManagerScript : MonoBehaviour
     public static event GameOverEventDelegate GameOverEvent;
     public static event PreparationRemainingWallNumberChangedEventDelegate PreparationRemainingWallNumberChangedEvent;
     public static event RealTimeRemainingWallNumberChangedEventDelegate RealTimeRemainingWallNumberChangedEvent;
+    public static event PreparationRemainingWallNumberChangedEventDelegate PreparationRemainingTowerNumberChangedEvent;
+    public static event RealTimeRemainingWallNumberChangedEventDelegate RealTimeRemainingTowerNumberChangedEvent;
     public static event EnemyGotDestroyedEventDelegate EnemyGotDestroyedEvent;
     #endregion
 
@@ -91,6 +95,14 @@ public class EventManagerScript : MonoBehaviour
     public static void InvokeRealTimeRemainingWallNumberChangedEvent()
     {
         RealTimeRemainingWallNumberChangedEvent.Invoke();
+    }
+    public static void InvokePreparationRemainingTowerNumberChangedEvent()
+    {
+        PreparationRemainingTowerNumberChangedEvent.Invoke();
+    }
+    public static void InvokeRealTimeRemainingTowerNumberChangedEvent()
+    {
+        RealTimeRemainingTowerNumberChangedEvent.Invoke();
     }
     public static void InvokeEnemyGotDestroyedEvent(GameObject enemy)
     {

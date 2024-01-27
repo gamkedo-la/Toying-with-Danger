@@ -286,8 +286,7 @@ public class PlayerScript : MonoBehaviour
                 break;
             case PuzzlePieceType.Tower:
                 GameManagerScript.preparationStageTowersLeft--;
-                //EventManagerScript.InvokePreparationRemainingWallNumberChangedEvent();
-                //To do : EventManagerScript.InvokePreparationRemainingTowerNumberChangedEvent()
+                EventManagerScript.InvokePreparationRemainingTowerNumberChangedEvent();
                 if (GameManagerScript.preparationStageTowersLeft > 0)
                 {
                     InstantiatePuzzlePiece();
@@ -317,8 +316,7 @@ public class PlayerScript : MonoBehaviour
                 break;
             case PuzzlePieceType.Tower:
                 GameManagerScript.realTimeStageTowersLeft--;
-                //EventManagerScript.InvokePreparationRemainingWallNumberChangedEvent();
-                //To do : EventManagerScript.InvokePreparationRemainingTowerNumberChangedEvent()
+                EventManagerScript.InvokeRealTimeRemainingTowerNumberChangedEvent();
                 if (GameManagerScript.realTimeStageTowersLeft > 0)
                 {
                     InstantiatePuzzlePiece();

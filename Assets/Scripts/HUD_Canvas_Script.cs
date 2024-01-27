@@ -16,16 +16,19 @@ public class HUD_Canvas_Script : MonoBehaviour
     [SerializeField] TextMeshProUGUI hitPointsTextGameObject;
     [SerializeField] TextMeshProUGUI preparationStageTextGameObject;
     [SerializeField] TextMeshProUGUI timerTextGameObject;
-    [SerializeField] TextMeshProUGUI preparationPiecesTextGameObject;
+    [SerializeField] TextMeshProUGUI preparationWallPiecesTextGameObject;
+    [SerializeField] TextMeshProUGUI preparationTowerPiecesTextGameObject;
     #endregion
 
     #region event subscriptions
     private void OnEnable()
     {
         EventManagerScript.PreparationRemainingWallNumberChangedEvent += HandlePreparationRemainingWallNumberChangedEvent;
+        EventManagerScript.PreparationRemainingTowerNumberChangedEvent += HandlePreparationRemainingTowerNumberChangedEvent;
         EventManagerScript.OutOfPreparationPiecesEvent += HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent += HandleStartRealTimeStageEvent;
         EventManagerScript.RealTimeRemainingWallNumberChangedEvent += HandleRealTimeRemainingWallNumberChangedEvent;
+        EventManagerScript.RealTimeRemainingTowerNumberChangedEvent += HandleRealTimeRemainingTowerNumberChangedEvent;
         EventManagerScript.OutOfRealTimePiecesEvent += HandleOutOfRealTimePiecesEvent;
         EventManagerScript.ToyReachedBedEvent += HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent += HandleGameOverEvent;
@@ -34,9 +37,11 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void OnDisable()
     {
         EventManagerScript.PreparationRemainingWallNumberChangedEvent -= HandlePreparationRemainingWallNumberChangedEvent;
+        EventManagerScript.PreparationRemainingTowerNumberChangedEvent -= HandlePreparationRemainingTowerNumberChangedEvent;
         EventManagerScript.OutOfPreparationPiecesEvent -= HandleOutOfPreparationPiecesEvent;
         EventManagerScript.StartRealTimeStageEvent -= HandleStartRealTimeStageEvent;
         EventManagerScript.RealTimeRemainingWallNumberChangedEvent -= HandleRealTimeRemainingWallNumberChangedEvent;
+        EventManagerScript.RealTimeRemainingTowerNumberChangedEvent -= HandleRealTimeRemainingTowerNumberChangedEvent;
         EventManagerScript.OutOfRealTimePiecesEvent -= HandleOutOfRealTimePiecesEvent;
         EventManagerScript.ToyReachedBedEvent -= HandleToyReachedBedEvent;
         EventManagerScript.GameOverEvent -= HandleGameOverEvent;
@@ -46,26 +51,33 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void Start()
     {
         hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
-        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.totalPreparationWalls.ToString();
+        preparationWallPiecesTextGameObject.text = "Preparation Wall Pieces: " + GameManagerScript.totalPreparationWalls.ToString();
+        preparationTowerPiecesTextGameObject.text = "Preparation Tower Pieces: " + GameManagerScript.totalPreparationTowers.ToString();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            preparationStageTextGameObject.gameObject.SetActive(!preparationStageTextGameObject.gameObject.activeSelf);
+            preparationWallPiecesTextGameObject.gameObject.SetActive(!preparationWallPiecesTextGameObject.gameObject.activeSelf);
+            preparationTowerPiecesTextGameObject.gameObject.SetActive(!preparationTowerPiecesTextGameObject.gameObject.activeSelf);
         }
     }
 
     #region preparation stage
     private void HandlePreparationRemainingWallNumberChangedEvent()
     {
-        preparationPiecesTextGameObject.text = "Preparation Pieces: " + GameManagerScript.preparationStageWallsLeft;
+        preparationWallPiecesTextGameObject.text = "Preparation Wall Pieces: " + GameManagerScript.preparationStageWallsLeft;
+    }
+
+    private void HandlePreparationRemainingTowerNumberChangedEvent()
+    {
+        preparationTowerPiecesTextGameObject.text = "Preparation Tower Pieces: " + GameManagerScript.preparationStageTowersLeft;
     }
 
     private void HandleOutOfPreparationPiecesEvent()
     {
-        preparationStageTextGameObject.text = "You're out of preparation pieces. Press space when ready.";
+        preparationWallPiecesTextGameObject.text = "You're out of preparation pieces. Press space when ready.";
     }
     #endregion
 
@@ -73,13 +85,19 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void HandleStartRealTimeStageEvent()
     {
         timerTextGameObject.gameObject.SetActive(true);
-        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.totalRealTimeStageWalls;
+        preparationWallPiecesTextGameObject.text = "Real Time Wall Pieces Left: " + GameManagerScript.totalRealTimeStageWalls;
+        preparationTowerPiecesTextGameObject.text = "Real Time Tower Pieces Left: " + GameManagerScript.totalRealTimeStageTowers;
         preparationStageTextGameObject.text = "You now have some more pieces. Stop the toys!";
     }
 
     private void HandleRealTimeRemainingWallNumberChangedEvent()
     {
-        preparationPiecesTextGameObject.text = "Real Time Pieces Left: " + GameManagerScript.realTimeStageWallsLeft;
+        preparationWallPiecesTextGameObject.text = "Real Time Wall Pieces Left: " + GameManagerScript.realTimeStageWallsLeft;
+    }
+
+    private void HandleRealTimeRemainingTowerNumberChangedEvent()
+    {
+        preparationTowerPiecesTextGameObject.text = "Real Time Tower Pieces Left: " + GameManagerScript.realTimeStageTowersLeft;
     }
 
     private void HandleOutOfRealTimePiecesEvent()
