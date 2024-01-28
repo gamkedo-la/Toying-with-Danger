@@ -219,26 +219,26 @@ public class PlayerScript : MonoBehaviour
         //}
 
         if (Physics.Raycast(ray, out raycastHit, 100, layerMask))
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastHit.distance, Color.yellow);
-                Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
-                lastPositionForMouse = grid.CellToWorld(gridPosition);
-                isGroundFound = true;
-                //Debug.Log("Did Hit");
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-                //Debug.Log("Did not Hit");
-            }
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastHit.distance, Color.yellow);
+            Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
+            lastPositionForMouse = grid.CellToWorld(gridPosition);
+            isGroundFound = true;
+            //Debug.Log("Did Hit");
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            //Debug.Log("Did not Hit");
+        }
 
-            //if (raycastHit.transform.tag == "Ground")
-            //{
-            //    Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
-            //    lastPositionForMouse = grid.CellToWorld(gridPosition);
-            //    isGroundFound = true;
-            //}
+        //if (raycastHit.transform.tag == "Ground")
+        //{
+        //    Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
+        //    lastPositionForMouse = grid.CellToWorld(gridPosition);
+        //    isGroundFound = true;
         //}
+    //}
 
         return isGroundFound;
     }

@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toy Block
       objectReference: {fileID: 0}
+    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -213,6 +217,10 @@ PrefabInstance:
     - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_Name
       value: Toy Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_RootOrder
@@ -913,6 +921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toy Block
       objectReference: {fileID: 0}
+    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1158,6 +1170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toy Block
       objectReference: {fileID: 0}
+    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1273,6 +1289,10 @@ PrefabInstance:
     - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_Name
       value: Toy Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_RootOrder
@@ -1507,6 +1527,10 @@ PrefabInstance:
     - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_Name
       value: Toy Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
       propertyPath: m_RootOrder
@@ -2233,7 +2257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4907849912930655762, guid: 185f8e9cb65d5e443a28217f67f6c10c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.92
+      value: -20.21
       objectReference: {fileID: 0}
     - target: {fileID: 4907849912930655762, guid: 185f8e9cb65d5e443a28217f67f6c10c, type: 3}
       propertyPath: m_LocalRotation.w
