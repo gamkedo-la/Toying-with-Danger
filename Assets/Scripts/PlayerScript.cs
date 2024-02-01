@@ -245,7 +245,7 @@ public class PlayerScript : MonoBehaviour
 
     private void PlaceCurrentPuzzlePiece()
     {
-        if (!GetSelectedMapPosition() || !canPlaceCurrentPieceInCurrentGridCell)
+        if (!GetSelectedMapPosition() || !canPlaceCurrentPieceInCurrentGridCell || GameManagerScript.preventBlockPlacement)
         {
             return;
         }
