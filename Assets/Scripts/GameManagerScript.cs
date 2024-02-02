@@ -37,6 +37,8 @@ public class GameManagerScript : MonoBehaviour
     [Tooltip("Total amount of time for the level.")]
     public static float totalLevelTime = 15.0f;
 
+    public static bool preventBlockPlacement = false;
+
     #endregion
 
     #region event subscriptions
@@ -72,7 +74,14 @@ public class GameManagerScript : MonoBehaviour
         //end preparation stage and start real-time stage when space bar is pressed
         if (Input.GetKeyUp(KeyCode.Space) && GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
         {
-            EventManagerScript.InvokeStartRealTimeStageEvent();
+            if (GameManagerScript.preparationStageWallsLeft == 0 && GameManagerScript.preparationStageTowersLeft == 0)
+            {
+                EventManagerScript.InvokeStartRealTimeStageEvent();
+            }
+            else
+            {
+                EventManagerScript.InvokeConfirmLevelStartEvent();
+            }
         }
     }
 
