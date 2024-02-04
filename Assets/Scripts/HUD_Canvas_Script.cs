@@ -13,7 +13,7 @@ public class HUD_Canvas_Script : MonoBehaviour
     #region cached references
     [SerializeField] GameObject notificationTextGameObject;
     private TextMeshProUGUI notificationTextMesh;
-    [SerializeField] TextMeshProUGUI hitPointsTextGameObject;
+    [SerializeField] Slider hitPointsTextGameObject;
     [SerializeField] TextMeshProUGUI preparationStageTextGameObject;
     [SerializeField] TextMeshProUGUI timerTextGameObject;
     [SerializeField] TextMeshProUGUI preparationWallPiecesTextGameObject;
@@ -50,7 +50,8 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void Start()
     {
-        hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
+        hitPointsTextGameObject.maxValue = GameManagerScript.hitPoints;
+        hitPointsTextGameObject.value = GameManagerScript.hitPoints;
         preparationWallPiecesTextGameObject.text = "Preparation Wall Pieces: " + GameManagerScript.totalPreparationWalls.ToString();
         preparationTowerPiecesTextGameObject.text = "Preparation Tower Pieces: " + GameManagerScript.totalPreparationTowers.ToString();
     }
@@ -135,7 +136,7 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void UpdateHitPointsText()
     {
-        hitPointsTextGameObject.text = "Hit points: " + GameManagerScript.hitPoints.ToString();
+        hitPointsTextGameObject.value = GameManagerScript.hitPoints;
     }
     #endregion
     #endregion
