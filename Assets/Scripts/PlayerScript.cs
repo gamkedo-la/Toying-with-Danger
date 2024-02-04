@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject defaultPuzzlePiece;
     private Vector3 wallSizeVector3;
     private LayerMask unplacedWallLayerMask; //to be used to ignore the wall piece the player is trying to place
-    [SerializeField] private bool canPlaceCurrentPieceInCurrentGridCell = false;
+    private bool canPlaceCurrentPieceInCurrentGridCell = false;
 
     MeshRenderer mouseIndicatorsMeshRenderer;
 
@@ -27,7 +27,6 @@ public class PlayerScript : MonoBehaviour
     private Vector3 lastPositionForMouse;
     private float wallZOffset;
     private PuzzlePieceType currentPuzzlePieceType = PuzzlePieceType.Wall;
-    [SerializeField] private WallPlacementType wallPlacementType = WallPlacementType.NewWall;
 
     #region event subscriptions
     private void OnEnable()
@@ -208,17 +207,16 @@ public class PlayerScript : MonoBehaviour
         layerMask = ~layerMask; // This inverts the layerMask, allowing the raycast to interact with everything EXCEPT the IgnoreRaycast layer.
 
 
-        if (Physics.Raycast(ray, out raycastHit))//
-        {
-            if (raycastHit.transform.tag == "Tower")
-            {
-                wallPlacementType = WallPlacementType.UpgradeCurrentWall;
-            }
-            else
-            {
-                wallPlacementType = WallPlacementType.NewWall;
-            }
-        }
+        //if (Physics.Raycast(raycastHit, out raycastHit, 100/*, LayerMask.NameToLayer("Ground")*/))//
+        //{
+        //if (raycastHit.transform.tag == "Ground")
+        //{
+        //    mouseIndicatorsMeshRenderer.material = usableIndicatorMaterial;
+        //}
+        //else
+        //{
+        //    mouseIndicatorsMeshRenderer.material = unusableIndicatorMaterial;
+        //}
 
         if (Physics.Raycast(ray, out raycastHit, 100, layerMask))
         {
@@ -226,7 +224,6 @@ public class PlayerScript : MonoBehaviour
             Vector3Int gridPosition = grid.WorldToCell(raycastHit.point);
             lastPositionForMouse = grid.CellToWorld(gridPosition);
             isGroundFound = true;
-            
             //Debug.Log("Did Hit");
         }
         else
@@ -250,15 +247,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (!GetSelectedMapPosition() || !canPlaceCurrentPieceInCurrentGridCell || GameManagerScript.preventBlockPlacement)
         {
-            if (wallPlacementType == WallPlacementType.UpgradeCurrentWall && currentPuzzlePieceType == PuzzlePieceType.Tower)
-            {
-                Debug.Log("wall upgrade available");
-                return;
-            }
-            else
-            {
-                return;
-            }
+            return;
         }
 
 
