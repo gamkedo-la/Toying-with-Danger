@@ -3485,6 +3485,7 @@ GameObject:
   - component: {fileID: 1590842217}
   - component: {fileID: 1590842221}
   - component: {fileID: 1590842222}
+  - component: {fileID: 1590842223}
   m_Layer: 8
   m_Name: EnemyDestination
   m_TagString: Untagged
@@ -3621,6 +3622,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82017a50cff4da5499dd78a9afba02b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1590842223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590842216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af64078af0e36a347aa149e0a482dc0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bed: {fileID: 1590842218}
+  damageColor: {r: 0.754717, g: 0.19698584, b: 0.20590943, a: 1}
 --- !u!1 &1626554869
 GameObject:
   m_ObjectHideFlags: 0
