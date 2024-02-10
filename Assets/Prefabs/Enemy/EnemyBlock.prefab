@@ -54,10 +54,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4724578, y: 1.718744, z: 1.6399367}
-  m_Center: {x: 0.016781786, y: 0.25578776, z: 0.021830399}
+  m_Size: {x: 1.4724578, y: 0.7324639, z: 1.6427767}
+  m_Center: {x: 0.016781762, y: -0.16099663, z: -0.20810783}
 --- !u!195 &5505051016116033840
 NavMeshAgent:
   m_ObjectHideFlags: 0

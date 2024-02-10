@@ -47,7 +47,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
         {
-            CheckIfAgentReachedDestination();
+            //CheckIfAgentReachedDestination();
             CheckAgentsPathStatus();
         }
     }
@@ -105,10 +105,10 @@ public class EnemyScript : MonoBehaviour
                         break;
                     case NavMeshPathStatus.PathPartial:
                         EventManagerScript.InvokeGameOverEvent(GameOverType.NoPathAvailableForEnemy);
-                        //this means path is not possible to reach, we end game here.
+                        //this means destination is not possible to reach, we end game here.
                         break;
                     default:
-                        //this means path is not possible to reach, we end game here.
+                        //this means destination is not possible to reach, we end game here.
                         EventManagerScript.InvokeGameOverEvent(GameOverType.NoPathAvailableForEnemy);
                         break;
                 }
@@ -118,7 +118,6 @@ public class EnemyScript : MonoBehaviour
 
     private void HandleGameOverEvent(GameOverType gameOverType)
     {
-        print("enemy script invoking game over handling");
         agent.destination = agent.transform.position;
     }
 }

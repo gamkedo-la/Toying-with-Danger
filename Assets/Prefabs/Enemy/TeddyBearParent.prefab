@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 174418835424989571}
   - component: {fileID: 4444729583957256055}
+  - component: {fileID: 1751690430018212239}
   m_Layer: 0
   m_Name: TeddyBearParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,6 +56,27 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1751690430018212239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463541718867640048}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.57, z: 1}
+  m_Center: {x: 0, y: 0.78, z: 0}
 --- !u!1001 &7374538354643450367
 PrefabInstance:
   m_ObjectHideFlags: 0
