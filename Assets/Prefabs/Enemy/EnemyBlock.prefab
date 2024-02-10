@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5505051016116033843}
   - component: {fileID: 5505051016116033840}
   - component: {fileID: 5253962367212139726}
-  - component: {fileID: 7060907375085302250}
   - component: {fileID: 6670143228400127154}
-  m_Layer: 8
+  - component: {fileID: -8247440889225631819}
+  m_Layer: 9
   m_Name: EnemyBlock
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.4724578, y: 1.718744, z: 1.6399367}
   m_Center: {x: 0.016781786, y: 0.25578776, z: 0.021830399}
@@ -96,7 +96,20 @@ MonoBehaviour:
   destinationReachedTreshold: 0.3
   currentPathStatus: 0
   destructionPoints: 0
---- !u!54 &7060907375085302250
+--- !u!114 &6670143228400127154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5505051016116033841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b3654a5c5eca7b4795f032e494400df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+--- !u!54 &-8247440889225631819
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,19 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6670143228400127154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5505051016116033841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3654a5c5eca7b4795f032e494400df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
 --- !u!1001 &6157110358489172821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,6 +144,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5505051016116033844}
     m_Modifications:
+    - target: {fileID: 3963914385225215708, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4739119885852593343, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -203,6 +207,10 @@ PrefabInstance:
     - target: {fileID: 5372632460864230917, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
       propertyPath: m_Name
       value: Block Enemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372632460864230917, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
