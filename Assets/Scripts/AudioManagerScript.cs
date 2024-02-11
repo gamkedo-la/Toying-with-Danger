@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,52 @@ public class AudioManagerScript : MonoBehaviour
     ///
 
     #region cached references
-    private AudioSource myAudioSource;
+    public Sound[] musicSounds, sfxSounds;
+    public AudioSource musicSource, sfxSource;
+
+    public static AudioManagerScript Instance { get; private set; }
     #endregion
 
     private void Awake()
     {
-        myAudioSource = gameObject.transform.GetComponent<AudioSource>();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void PlayMusic(string name)
+    {
+        Sound audioClip = Array.Find(musicSounds, c => c.name == name);
+
+        if (audioClip == null)
+        {
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            musicSource.clip = audioClip.clip;
+            musicSource.Play();
+        }
+    }
+
+    public void PlaySfx(string name)
+    {
+        Sound audioClip = Array.Find(sfxSounds, c => c.name == name);
+
+        if (audioClip == null)
+        {
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            sfxSource.PlayOneShot(audioClip.clip);
+        }
     }
 
     #region event subscriptions
@@ -31,6 +72,6 @@ public class AudioManagerScript : MonoBehaviour
 
     private void HandleStartRealTimeStageEvent()
     {
-        myAudioSource.Play();
+        Instance.PlayMusic("StartGameMusic");
     }
 }

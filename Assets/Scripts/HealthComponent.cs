@@ -34,6 +34,7 @@ public class HealthComponent : MonoBehaviour
     public void RemoveHealth(float amount)
     {
         CurrentHealth -= amount;
+        AudioManagerScript.Instance.PlaySfx("EnemyHit");
     }
     public void AddHealth(float amount)
     {

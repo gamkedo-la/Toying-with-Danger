@@ -51,6 +51,12 @@ public class TowerAbility : MonoBehaviour
 
         return closestObject;
     }
+    public void SetColliderRadius(float radius)
+    {
+        DetectionRadius = radius;
+        sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider.radius = DetectionRadius;
+    }
     protected virtual bool RemoveEnemy(EnemyScript enemy)
     {
         if (enemiesInRadius.Contains(enemy))

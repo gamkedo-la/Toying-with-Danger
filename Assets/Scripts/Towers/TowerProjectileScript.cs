@@ -33,7 +33,7 @@ public class TowerProjectileScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<HealthComponent>().RemoveHealth(1);
+            other.gameObject.GetComponent<HealthComponent>()?.RemoveHealth(1);
             Destroy(gameObject);
         }
     }
