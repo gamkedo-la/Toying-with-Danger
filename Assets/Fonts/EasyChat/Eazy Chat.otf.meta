@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: df2912895d885c1478ab47f7c7f8a0a6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Eazy Chat
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: cc390daed268de24c8a06d5883c43701, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
