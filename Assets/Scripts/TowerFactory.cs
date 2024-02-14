@@ -22,6 +22,7 @@ public static class TowerFactory
         InstantiateTowerFactory();
         TowerScriptableObject randomTowerScriptableObject = allTowerScriptableObjects[Random.Range(0, allTowerScriptableObjects.Count)];
         var towerGameObject = GameObject.Instantiate(randomTowerScriptableObject.prefab, spawnPosition, spawnRotation, parent);
+        towerGameObject.GetComponent<TowerAbility>().SetColliderRadius(randomTowerScriptableObject.towerRadius);
         return towerGameObject;
     }
 }
