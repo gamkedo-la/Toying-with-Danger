@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField]
     [Tooltip("How often this spawn point will spawn an enemy.")]
     private float spawnInterval;
+
+    private LineRenderer lineRenderer;
     #endregion
 
     private float timeSinceLastEnemySpawned = 3;
@@ -22,15 +25,22 @@ public class EnemySpawnManager : MonoBehaviour
     private GameObject enemyDestinations;
     #endregion
 
+    private void Start()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        DrawLine();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
         {
             SpawnEnemyWithInterval();
-        }       
+        }
+        UpdateDrawLineColor();
     }
-    
+
     private void SpawnEnemyWithInterval()
     {
         if (timeSinceLastEnemySpawned >= spawnInterval)
@@ -54,5 +64,16 @@ public class EnemySpawnManager : MonoBehaviour
             totalNumberOfEnemiesToSpawn--;
             timeSinceLastEnemySpawned = 0;
         }
+    }
+
+    private void DrawLine()
+    {
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, enemyDestinations.transform.GetChild(0).position);
+    }
+
+    private void UpdateDrawLineColor()
+    {
+        lineRenderer.material.color = Color.Lerp(Color.red, Color.green, Mathf.PingPong(Time.time, 1));
     }
 }
