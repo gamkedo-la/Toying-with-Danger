@@ -261,6 +261,15 @@ public class PlayerScript : MonoBehaviour
         currentPuzzleObjectNavMeshSurface = null;
 
 
+        if (currentPuzzlePieceType == PuzzlePieceType.Wall)
+        {
+            AudioManagerScript.Instance.PlaySfx("WallPlaced");
+        }
+        else if (currentPuzzlePieceType == PuzzlePieceType.Tower)
+        {
+            AudioManagerScript.Instance.PlaySfx("TowerPlaced");
+        }
+
 
         if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
         {
