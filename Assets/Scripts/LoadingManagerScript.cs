@@ -20,6 +20,7 @@ public class LoadingManager : MonoBehaviour
 
     [SerializeField] Image loadingImage;
     [SerializeField] Image fadeImage;
+    [SerializeField] bool skipSplashScreen = false;
 
     private void Awake()
     {
@@ -39,6 +40,9 @@ public class LoadingManager : MonoBehaviour
     {
         fadeInAnimationClipLength = fadeInAnimationClip.length;
         fadeOutAnimationClipLength = fadeOutAnimationClip.length;
+
+        if (skipSplashScreen) return;
+
         StartCoroutine(LoadInitialization());
     }
 

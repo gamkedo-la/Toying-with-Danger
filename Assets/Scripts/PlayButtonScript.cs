@@ -6,6 +6,7 @@ public class PlayButtonScript : MonoBehaviour
 {
     public void HandlePlayButtonClick()
     {
+        Debug.Log(LoadingManager.Instance);
         LoadingManager.Instance.LoadScene(GameEnumsNamespace.GameSceneEnums.Main);
     }
 }
