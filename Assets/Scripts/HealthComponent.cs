@@ -29,6 +29,12 @@ public class HealthComponent : MonoBehaviour
             }
         }
     }
+
+    public float HealthFraction {
+        get {
+            return currentHealth / startingHealth;
+        }
+    }
     float currentHealth;
 
     public void RemoveHealth(float amount)
