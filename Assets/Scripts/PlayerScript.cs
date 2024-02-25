@@ -140,6 +140,7 @@ public class PlayerScript : MonoBehaviour
                 break;
             case PuzzlePieceType.Tower:
                 currentPuzzlePiece = TowerFactory.CreateRandomTower(transform, mousePositionWorldSpace, Quaternion.identity);
+                currentPuzzlePiece.GetComponent<TowerAbility>().enabled = false;
                 break;
             default:
                 break;
@@ -256,6 +257,12 @@ public class PlayerScript : MonoBehaviour
         currentPuzzleObjectCollider.enabled = true;
         currentPuzzleObjectNavMeshSurface.enabled = true;
         currentPuzzlePiece.layer = 8; //change from unplaced layer to placed layer
+
+        if (currentPuzzlePieceType == PuzzlePieceType.Tower)
+        {
+            currentPuzzlePiece.GetComponent<TowerAbility>().enabled = true;
+        }
+
         currentPuzzlePiece = null;
         currentPuzzleObjectCollider = null;
         currentPuzzleObjectNavMeshSurface = null;
