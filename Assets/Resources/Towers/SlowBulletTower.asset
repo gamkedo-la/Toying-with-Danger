@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61898442a3a6bb842adaee7c4a5e9578, type: 3}
+  m_Name: SlowBulletTower
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5908379637911033767, guid: 4e60fe8282fe43243a34b4eefa0d6c6e, type: 3}
+  towerRadius: 1.5

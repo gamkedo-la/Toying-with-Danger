@@ -3,15 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerProjectileScript : MonoBehaviour
+public class SlowBulletProjectileScript : MonoBehaviour
 {
     public GameObject target;
     public float speed;
-    public GameObject AoeEffect;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -35,7 +34,6 @@ public class TowerProjectileScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<HealthComponent>()?.RemoveHealth(1);
-            Instantiate(AoeEffect,transform.position,transform.rotation,transform.parent);
             Destroy(gameObject);
         }
     }

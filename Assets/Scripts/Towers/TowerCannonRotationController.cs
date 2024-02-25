@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class TowerCannonRotationController : MonoBehaviour
 {
-    public TowerDetectionScript towerDetectionScript;
+    public TowerAbility towerAbility;
 
     public bool aimsAtTarget;
 
@@ -18,7 +18,7 @@ public class TowerCannonRotationController : MonoBehaviour
     private void Update()
     {
         if(aimsAtTarget)
-            targetToAimAt = towerDetectionScript.GetClosestTarget();
+            targetToAimAt = towerAbility.GetClosestTarget();
         else
             targetToAimAt = null;
         

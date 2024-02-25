@@ -23,4 +23,12 @@ public class AoEController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<HealthComponent>()?.RemoveHealth(1);
+        }
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireTowerScript : TowerAbility
+public class SlowBulletTower : TowerAbility
 {
     public Transform firePosition;
     public GameObject projectilePrefab;

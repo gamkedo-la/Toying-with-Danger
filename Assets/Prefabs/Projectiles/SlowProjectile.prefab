@@ -13,9 +13,6 @@ GameObject:
   - component: {fileID: 9203825188946607128}
   - component: {fileID: 8011685596507537876}
   - component: {fileID: 3742243592802511834}
-  - component: {fileID: 2713646287316671805}
-  - component: {fileID: 6093915427462590509}
-  - component: {fileID: 7518594679891862107}
   m_Layer: 0
   m_Name: SlowProjectile
   m_TagString: Untagged
@@ -103,7 +100,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -122,57 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 0
---- !u!54 &2713646287316671805
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937589320091115438}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 576
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 439
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &6093915427462590509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937589320091115438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cbe9ba03820f24196e9629c6c65828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
---- !u!114 &7518594679891862107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937589320091115438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52070d18525a1a841b6f2f9b33030488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactObject: {fileID: 7383738973977908390, guid: 77fb070b4953a1343835e3cf385d1195, type: 3}
+  speed: 0.2
+  AoeEffect: {fileID: 7383738973977908390, guid: 77fb070b4953a1343835e3cf385d1195, type: 3}
