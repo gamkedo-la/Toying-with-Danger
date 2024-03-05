@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5908379637911033767, guid: 4e60fe8282fe43243a34b4eefa0d6c6e, type: 3}
   towerRadius: 1.5
+  descriptionForMainMenu: Aoe tower with slower fire rate and radius
+  nameForUI: Aoe Tower

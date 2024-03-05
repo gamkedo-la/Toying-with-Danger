@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3931030526920306474, guid: 0cb4595b8fb726f4fa6a6ecfa4639f57, type: 3}
   towerRadius: 2
+  descriptionForMainMenu: Slow tower has no damage but slows enemies around
+  nameForUI: Slow Tower

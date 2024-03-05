@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8279408552208610651, guid: 185f8e9cb65d5e443a28217f67f6c10c, type: 3}
   towerRadius: 2
+  descriptionForMainMenu: Basic tower with medium radius and damage
+  nameForUI: Basic Tower

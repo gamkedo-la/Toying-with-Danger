@@ -7,4 +7,6 @@ public class TowerScriptableObject : ScriptableObject
 {
     public GameObject prefab;
     public float towerRadius;
+    public string descriptionForMainMenu;
+    public string nameForUI;
 }
