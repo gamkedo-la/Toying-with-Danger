@@ -34,5 +34,6 @@ public class DebugManagerScript : MonoBehaviour
             }
         }
     }
-}
 #endif
+}
+

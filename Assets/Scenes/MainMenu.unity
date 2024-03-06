@@ -1363,9 +1363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quit
-
-'
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 932acf5518fb864438bc48ba82555da9, type: 2}
   m_sharedMaterial: {fileID: -7979377376183477905, guid: 932acf5518fb864438bc48ba82555da9, type: 2}
@@ -2999,7 +2997,7 @@ GameObject:
   - component: {fileID: 1672540674}
   - component: {fileID: 1672540673}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: CreditsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
