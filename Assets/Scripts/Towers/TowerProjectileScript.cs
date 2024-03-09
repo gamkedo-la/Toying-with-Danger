@@ -35,7 +35,11 @@ public class TowerProjectileScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<HealthComponent>()?.RemoveHealth(1);
-            Instantiate(AoeEffect,transform.position,transform.rotation,transform.parent);
+            if (AoeEffect != null)
+            {
+                Instantiate(AoeEffect, transform.position, transform.rotation, transform.parent);
+            }
+            
             Destroy(gameObject);
         }
     }

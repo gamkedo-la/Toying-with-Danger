@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 0.2
+  speed: 0.1
   AoeEffect: {fileID: 7383738973977908390, guid: 77fb070b4953a1343835e3cf385d1195, type: 3}
