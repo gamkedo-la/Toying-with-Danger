@@ -1212,7 +1212,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 52876205}
-  - {fileID: 650737238}
   m_Father: {fileID: 1694170590}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1292,84 +1291,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562701143}
   m_CullTransparentMesh: 1
---- !u!1001 &650737237
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 561838808}
-    m_Modifications:
-    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_Name
-      value: Toy Block
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710712465828517052, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
---- !u!4 &650737238 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3374799263469850118, guid: 6265ea765f940494da57f9ad9daeb3db, type: 3}
-  m_PrefabInstance: {fileID: 650737237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,7 +2446,7 @@ PrefabInstance:
       objectReference: {fileID: 5505051016116033841, guid: ca1eaa8e159a7e24e967c5133e471f93, type: 3}
     - target: {fileID: 7877641218576157987, guid: c5b9dacf6b9ca1f42a160cd4fc441546, type: 3}
       propertyPath: spawnInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7877641218576157987, guid: c5b9dacf6b9ca1f42a160cd4fc441546, type: 3}
       propertyPath: enemyDestinations

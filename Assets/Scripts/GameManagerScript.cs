@@ -35,7 +35,7 @@ public class GameManagerScript : MonoBehaviour
     public static int hitPoints = 3;
 
     [Tooltip("Total amount of time for the level.")]
-    public static float totalLevelTime = 20.0f;
+    public static float totalLevelTime = 40.0f;
 
     public static bool preventBlockPlacement = false;
 

@@ -108,7 +108,10 @@ public class EventManagerScript : MonoBehaviour
     }
     public static void InvokeEnemyGotDestroyedEvent(GameObject enemy)
     {
-        EnemyGotDestroyedEvent.Invoke(enemy);
+        if (EnemyGotDestroyedEvent != null)
+        {
+            EnemyGotDestroyedEvent.Invoke(enemy);
+        }
     }
 
     public static void InvokeConfirmLevelStartEvent()

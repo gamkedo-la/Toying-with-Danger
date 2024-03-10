@@ -69,7 +69,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.75
+  m_Speed: 1
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -322,10 +322,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5372632460864230917, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7286647853731110764}
   m_SourcePrefab: {fileID: 100100000, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
 --- !u!4 &1492608280577165290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4739119885852593343, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
   m_PrefabInstance: {fileID: 6157110358489172821}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2305033760773217616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5372632460864230917, guid: def97565fab751e4798e52c724ac5cfd, type: 3}
+  m_PrefabInstance: {fileID: 6157110358489172821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7286647853731110764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2305033760773217616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a414f5420266344b624afe7fa055a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 5
+  rotationMagnitude: 0.2
