@@ -12,14 +12,14 @@ public class GameManagerScript : MonoBehaviour
     public static GameState currentGameState = GameState.preparationStage;
 
     [Tooltip("The total number of walls the player can place during the preparation stage.")]
-    public static int totalPreparationWalls = 10;
+    public static int totalPreparationWalls = 7;
 
-    public static int preparationStageWallsLeft = 10;
+    public static int preparationStageWallsLeft = 7;
 
     [Tooltip("The total number of walls the player can place during the real time stage.")]
-    public static int totalRealTimeStageWalls = 10;
+    public static int totalRealTimeStageWalls = 7;
 
-    public static int realTimeStageWallsLeft = 10;
+    public static int realTimeStageWallsLeft = 7;
 
     [Tooltip("The total number of walls the player can place during the preparation stage.")]
     public static int totalPreparationTowers = 2;
