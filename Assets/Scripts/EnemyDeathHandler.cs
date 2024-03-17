@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 public class EnemyDeathHandler : MonoBehaviour
@@ -35,10 +36,12 @@ public class EnemyDeathHandler : MonoBehaviour
         if (enemy.name == "EnemyBlock(Clone)")
         {
             effect = Instantiate(blockEnemyDeathPrefab, enemy.transform.position, enemy.transform.rotation);
+            AudioManagerScript.Instance.PlaySfx("LegoEnemyDeath");
         }
         else // if (enemy.name == "EnemyTeddyBear(Clone)")
         {
             effect = Instantiate(teddyBearEnemyDeathPrefab, enemy.transform.position, enemy.transform.rotation);
+            AudioManagerScript.Instance.PlaySfx("BearEnemyDeath");
         }
         StartCoroutine(WaitToRemoveParticleSystem(effect));
     }
