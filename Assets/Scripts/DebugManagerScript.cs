@@ -17,14 +17,14 @@ public class DebugManagerScript : MonoBehaviour
         //Add 1 more wall
         if (Input.GetKeyUp(KeyCode.F2))
         {
-            switch (GameManagerScript.currentGameState)
+            switch (GameManagerScript.GameManagerScriptInstance.currentGameState)
             {
                 case GameManagerScript.GameState.preparationStage:
-                    GameManagerScript.preparationStageWallsLeft += 1;
+                    GameManagerScript.GameManagerScriptInstance.preparationStageWallsLeft += 1;
                     EventManagerScript.InvokePreparationRemainingWallNumberChangedEvent();
                     break;
                 case GameManagerScript.GameState.realTimeStage:
-                    GameManagerScript.realTimeStageWallsLeft += 1;
+                    GameManagerScript.GameManagerScriptInstance.realTimeStageWallsLeft += 1;
                     EventManagerScript.InvokeRealTimeRemainingWallNumberChangedEvent();
                     break;
                 case GameManagerScript.GameState.gameOver:

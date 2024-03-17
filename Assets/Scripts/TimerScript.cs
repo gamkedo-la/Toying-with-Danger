@@ -24,7 +24,7 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentLevelTimerDuration = GameManagerScript.totalLevelTime;
+        currentLevelTimerDuration = GameManagerScript.GameManagerScriptInstance.totalLevelTime;
 
         canvasHUD_TimerTextGameObject = gameObject.transform.GetComponent<TextMeshProUGUI>();
     }

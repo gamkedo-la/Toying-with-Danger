@@ -20,7 +20,7 @@ public class LevelStartConfirmationMenu : MonoBehaviour
 
     private void OpenLevelStartConfirmationMenuEvent()
     {
-        GameManagerScript.preventBlockPlacement = true;
+        GameManagerScript.GameManagerScriptInstance.preventBlockPlacement = true;
         transform.GetChild(0).gameObject.SetActive(true);
     }
 
@@ -40,7 +40,7 @@ public class LevelStartConfirmationMenu : MonoBehaviour
     {
         yield return null;
 
-        GameManagerScript.preventBlockPlacement = false;
+        GameManagerScript.GameManagerScriptInstance.preventBlockPlacement = false;
         transform.GetChild(0).gameObject.SetActive(false);
     }
 

@@ -64,11 +64,11 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
+            if (GameManagerScript.GameManagerScriptInstance.currentGameState == GameManagerScript.GameState.preparationStage)
             {
                EventManagerScript.InvokePreparationPuzzlePiecePlacementEvent();
             }  
-            else if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
+            else if (GameManagerScript.GameManagerScriptInstance.currentGameState == GameManagerScript.GameState.realTimeStage)
             {
                 EventManagerScript.InvokeRealTimePuzzlePiecePlacementEvent();
             }
@@ -246,7 +246,7 @@ public class PlayerScript : MonoBehaviour
 
     private void PlaceCurrentPuzzlePiece()
     {
-        if (!GetSelectedMapPosition() || !canPlaceCurrentPieceInCurrentGridCell || GameManagerScript.preventBlockPlacement)
+        if (!GetSelectedMapPosition() || !canPlaceCurrentPieceInCurrentGridCell || GameManagerScript.GameManagerScriptInstance.preventBlockPlacement)
         {
             return;
         }
@@ -278,11 +278,11 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        if (GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
+        if (GameManagerScript.GameManagerScriptInstance.currentGameState == GameManagerScript.GameState.preparationStage)
         {
             PlacePreparationStagePuzzlePiece();
         }
-        else if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
+        else if (GameManagerScript.GameManagerScriptInstance.currentGameState == GameManagerScript.GameState.realTimeStage)
         {
             PlaceRealTimeStagePuzzlePiece();
         }
@@ -293,17 +293,17 @@ public class PlayerScript : MonoBehaviour
         switch (currentPuzzlePieceType)
         {
             case PuzzlePieceType.Wall:
-                GameManagerScript.preparationStageWallsLeft--;
+                GameManagerScript.GameManagerScriptInstance.preparationStageWallsLeft--;
                 EventManagerScript.InvokePreparationRemainingWallNumberChangedEvent();
-                if (GameManagerScript.preparationStageWallsLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.preparationStageWallsLeft > 0)
                 {
                     InstantiatePuzzlePiece();
                 }
                 break;
             case PuzzlePieceType.Tower:
-                GameManagerScript.preparationStageTowersLeft--;
+                GameManagerScript.GameManagerScriptInstance.preparationStageTowersLeft--;
                 EventManagerScript.InvokePreparationRemainingTowerNumberChangedEvent();
-                if (GameManagerScript.preparationStageTowersLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.preparationStageTowersLeft > 0)
                 {
                     InstantiatePuzzlePiece();
                 }
@@ -312,7 +312,7 @@ public class PlayerScript : MonoBehaviour
                 break;
         }
 
-        if (GameManagerScript.preparationStageWallsLeft == 0 && GameManagerScript.preparationStageTowersLeft == 0)
+        if (GameManagerScript.GameManagerScriptInstance.preparationStageWallsLeft == 0 && GameManagerScript.GameManagerScriptInstance.preparationStageTowersLeft == 0)
         {
             EventManagerScript.InvokeOutOfPreparationPiecesEvent();
         }
@@ -323,17 +323,17 @@ public class PlayerScript : MonoBehaviour
         switch (currentPuzzlePieceType)
         {
             case PuzzlePieceType.Wall:
-                GameManagerScript.realTimeStageWallsLeft--;
+                GameManagerScript.GameManagerScriptInstance.realTimeStageWallsLeft--;
                 EventManagerScript.InvokeRealTimeRemainingWallNumberChangedEvent();
-                if (GameManagerScript.realTimeStageWallsLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.realTimeStageWallsLeft > 0)
                 {
                     InstantiatePuzzlePiece();
                 }
                 break;
             case PuzzlePieceType.Tower:
-                GameManagerScript.realTimeStageTowersLeft--;
+                GameManagerScript.GameManagerScriptInstance.realTimeStageTowersLeft--;
                 EventManagerScript.InvokeRealTimeRemainingTowerNumberChangedEvent();
-                if (GameManagerScript.realTimeStageTowersLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.realTimeStageTowersLeft > 0)
                 {
                     InstantiatePuzzlePiece();
                 }
@@ -342,7 +342,7 @@ public class PlayerScript : MonoBehaviour
                 break;
         }
 
-        if (GameManagerScript.realTimeStageWallsLeft == 0 && GameManagerScript.realTimeStageTowersLeft == 0)
+        if (GameManagerScript.GameManagerScriptInstance.realTimeStageWallsLeft == 0 && GameManagerScript.GameManagerScriptInstance.realTimeStageTowersLeft == 0)
         {
             EventManagerScript.InvokeOutOfRealTimePiecesEvent();
         }
@@ -353,13 +353,13 @@ public class PlayerScript : MonoBehaviour
         switch (currentPuzzlePieceType)
         {
             case PuzzlePieceType.Wall:
-                if (GameManagerScript.preparationStageWallsLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.preparationStageWallsLeft > 0)
                 {
                     PlaceCurrentPuzzlePiece();
                 }
                 break;
             case PuzzlePieceType.Tower:
-                if (GameManagerScript.preparationStageTowersLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.preparationStageTowersLeft > 0)
                 {
                     PlaceCurrentPuzzlePiece();
                 }
@@ -375,13 +375,13 @@ public class PlayerScript : MonoBehaviour
         switch (currentPuzzlePieceType)
         {
             case PuzzlePieceType.Wall:
-                if (GameManagerScript.realTimeStageWallsLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.realTimeStageWallsLeft > 0)
                 {
                     PlaceCurrentPuzzlePiece();
                 }
                 break;
             case PuzzlePieceType.Tower:
-                if (GameManagerScript.realTimeStageTowersLeft > 0)
+                if (GameManagerScript.GameManagerScriptInstance.realTimeStageTowersLeft > 0)
                 {
                     PlaceCurrentPuzzlePiece();
                 }

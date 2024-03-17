@@ -9,35 +9,35 @@ public class GameManagerScript : MonoBehaviour
 
     #region designer properties
     public enum GameState { preparationStage, realTimeStage, gameOver }
-    public static GameState currentGameState = GameState.preparationStage;
+    public GameState currentGameState = GameState.preparationStage;
 
     [Tooltip("The total number of walls the player can place during the preparation stage.")]
-    public static int totalPreparationWalls = 7;
+    public int totalPreparationWalls = 7;
 
-    public static int preparationStageWallsLeft = 7;
+    public int preparationStageWallsLeft = 7;
 
     [Tooltip("The total number of walls the player can place during the real time stage.")]
-    public static int totalRealTimeStageWalls = 7;
+    public int totalRealTimeStageWalls = 7;
 
-    public static int realTimeStageWallsLeft = 7;
+    public int realTimeStageWallsLeft = 7;
 
     [Tooltip("The total number of walls the player can place during the preparation stage.")]
-    public static int totalPreparationTowers = 2;
+    public int totalPreparationTowers = 2;
 
-    public static int preparationStageTowersLeft = 2;
+    public int preparationStageTowersLeft = 2;
 
     [Tooltip("The total number of walls the player can place during the real time stage.")]
-    public static int totalRealTimeStageTowers = 2;
+    public int totalRealTimeStageTowers = 2;
 
-    public static int realTimeStageTowersLeft = 2;
+    public int realTimeStageTowersLeft = 2;
 
     [Tooltip("The total hit points at the start of the level.")]
-    public static int hitPoints = 3;
+    public int hitPoints = 3;
 
     [Tooltip("Total amount of time for the level.")]
-    public static float totalLevelTime = 40.0f;
+    public float totalLevelTime = 40.0f;
 
-    public static bool preventBlockPlacement = false;
+    public bool preventBlockPlacement = false;
 
     #endregion
 
@@ -67,14 +67,15 @@ public class GameManagerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
     {
         //end preparation stage and start real-time stage when space bar is pressed
-        if (Input.GetKeyUp(KeyCode.Space) && GameManagerScript.currentGameState == GameManagerScript.GameState.preparationStage)
+        if (Input.GetKeyUp(KeyCode.Space) && GameManagerScript.GameManagerScriptInstance.currentGameState == GameManagerScript.GameState.preparationStage)
         {
-            if (GameManagerScript.preparationStageWallsLeft == 0 && GameManagerScript.preparationStageTowersLeft == 0)
+            if (GameManagerScript.GameManagerScriptInstance.preparationStageWallsLeft == 0 && GameManagerScript.GameManagerScriptInstance.preparationStageTowersLeft == 0)
             {
                 EventManagerScript.InvokeStartRealTimeStageEvent();
             }
@@ -87,7 +88,7 @@ public class GameManagerScript : MonoBehaviour
 
     private void HandleStartRealTimeStageEvent()
     {
-        GameManagerScript.currentGameState = GameManagerScript.GameState.realTimeStage;
+        GameManagerScript.GameManagerScriptInstance.currentGameState = GameManagerScript.GameState.realTimeStage;
     }
 
     private void HandleGameOverEvent(GameOverType gameOverType)

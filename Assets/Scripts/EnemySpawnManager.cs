@@ -34,7 +34,7 @@ public class EnemySpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
+        if (GameManagerScript.GameManagerScriptInstance.currentGameState == GameManagerScript.GameState.realTimeStage)
         {
             SpawnEnemyWithInterval();
         }

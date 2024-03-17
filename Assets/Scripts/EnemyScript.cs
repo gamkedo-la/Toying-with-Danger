@@ -45,7 +45,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameManagerScript.currentGameState == GameManagerScript.GameState.realTimeStage)
+        if (GameManagerScript.GameManagerScriptInstance.currentGameState == GameManagerScript.GameState.realTimeStage)
         {
             //CheckIfAgentReachedDestination();
             CheckAgentsPathStatus();

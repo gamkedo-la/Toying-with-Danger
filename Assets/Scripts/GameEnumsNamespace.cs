@@ -7,5 +7,6 @@ namespace GameEnumsNamespace
         LoadingSplashScene,
         MainMenu,
         Main,
+        TutorialLevel
     }
 }

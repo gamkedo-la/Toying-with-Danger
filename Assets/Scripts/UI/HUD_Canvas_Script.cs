@@ -50,10 +50,10 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void Start()
     {
-        hitPointsTextGameObject.maxValue = GameManagerScript.hitPoints;
-        hitPointsTextGameObject.value = GameManagerScript.hitPoints;
-        preparationWallPiecesTextGameObject.text = "Preparation Wall Pieces: " + GameManagerScript.totalPreparationWalls.ToString();
-        preparationTowerPiecesTextGameObject.text = "Preparation Tower Pieces: " + GameManagerScript.totalPreparationTowers.ToString();
+        hitPointsTextGameObject.maxValue = GameManagerScript.GameManagerScriptInstance.hitPoints;
+        hitPointsTextGameObject.value = GameManagerScript.GameManagerScriptInstance.hitPoints;
+        preparationWallPiecesTextGameObject.text = "Preparation Wall Pieces: " + GameManagerScript.GameManagerScriptInstance.totalPreparationWalls.ToString();
+        preparationTowerPiecesTextGameObject.text = "Preparation Tower Pieces: " + GameManagerScript.GameManagerScriptInstance.totalPreparationTowers.ToString();
     }
 
     private void Update()
@@ -68,12 +68,12 @@ public class HUD_Canvas_Script : MonoBehaviour
     #region preparation stage
     private void HandlePreparationRemainingWallNumberChangedEvent()
     {
-        preparationWallPiecesTextGameObject.text = "Preparation Wall Pieces: " + GameManagerScript.preparationStageWallsLeft;
+        preparationWallPiecesTextGameObject.text = "Preparation Wall Pieces: " + GameManagerScript.GameManagerScriptInstance.preparationStageWallsLeft;
     }
 
     private void HandlePreparationRemainingTowerNumberChangedEvent()
     {
-        preparationTowerPiecesTextGameObject.text = "Preparation Tower Pieces: " + GameManagerScript.preparationStageTowersLeft;
+        preparationTowerPiecesTextGameObject.text = "Preparation Tower Pieces: " + GameManagerScript.GameManagerScriptInstance.preparationStageTowersLeft;
     }
 
     private void HandleOutOfPreparationPiecesEvent()
@@ -86,19 +86,19 @@ public class HUD_Canvas_Script : MonoBehaviour
     private void HandleStartRealTimeStageEvent()
     {
         timerTextGameObject.gameObject.SetActive(true);
-        preparationWallPiecesTextGameObject.text = "Real Time Wall Pieces Left: " + GameManagerScript.totalRealTimeStageWalls;
-        preparationTowerPiecesTextGameObject.text = "Real Time Tower Pieces Left: " + GameManagerScript.totalRealTimeStageTowers;
+        preparationWallPiecesTextGameObject.text = "Real Time Wall Pieces Left: " + GameManagerScript.GameManagerScriptInstance.totalRealTimeStageWalls;
+        preparationTowerPiecesTextGameObject.text = "Real Time Tower Pieces Left: " + GameManagerScript.GameManagerScriptInstance.totalRealTimeStageTowers;
         preparationStageTextGameObject.text = "You now have some more pieces. Stop the toys!";
     }
 
     private void HandleRealTimeRemainingWallNumberChangedEvent()
     {
-        preparationWallPiecesTextGameObject.text = "Real Time Wall Pieces Left: " + GameManagerScript.realTimeStageWallsLeft;
+        preparationWallPiecesTextGameObject.text = "Real Time Wall Pieces Left: " + GameManagerScript.GameManagerScriptInstance.realTimeStageWallsLeft;
     }
 
     private void HandleRealTimeRemainingTowerNumberChangedEvent()
     {
-        preparationTowerPiecesTextGameObject.text = "Real Time Tower Pieces Left: " + GameManagerScript.realTimeStageTowersLeft;
+        preparationTowerPiecesTextGameObject.text = "Real Time Tower Pieces Left: " + GameManagerScript.GameManagerScriptInstance.realTimeStageTowersLeft;
     }
 
     private void HandleOutOfRealTimePiecesEvent()
@@ -119,16 +119,16 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void DecrementHitPoints()
     {
-        GameManagerScript.hitPoints--;
-        if (GameManagerScript.hitPoints < 0)
+        GameManagerScript.GameManagerScriptInstance.hitPoints--;
+        if (GameManagerScript.GameManagerScriptInstance.hitPoints < 0)
         {
-            GameManagerScript.hitPoints = 0;
+            GameManagerScript.GameManagerScriptInstance.hitPoints = 0;
         }
     }
 
     private void CheckIfAllHitPointsAreGoneAndTriggerGameOverIfAppropriate()
     {
-        if (GameManagerScript.hitPoints == 0)
+        if (GameManagerScript.GameManagerScriptInstance.hitPoints == 0)
         {
             EventManagerScript.InvokeGameOverEvent(GameOverType.healthReachedZero);
         }
@@ -136,7 +136,7 @@ public class HUD_Canvas_Script : MonoBehaviour
 
     private void UpdateHitPointsText()
     {
-        hitPointsTextGameObject.value = GameManagerScript.hitPoints;
+        hitPointsTextGameObject.value = GameManagerScript.GameManagerScriptInstance.hitPoints;
     }
     #endregion
     #endregion
