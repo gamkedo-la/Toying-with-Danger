@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HUD_Canvas_Script : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class HUD_Canvas_Script : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerTextGameObject;
     [SerializeField] TextMeshProUGUI preparationWallPiecesTextGameObject;
     [SerializeField] TextMeshProUGUI preparationTowerPiecesTextGameObject;
+
+    [SerializeField] Button playLevel2Button;
     #endregion
 
     #region event subscriptions
@@ -153,6 +156,12 @@ public class HUD_Canvas_Script : MonoBehaviour
                 break;
             case GameOverType.GameWon:
                 notificationTextGameObject.GetComponent<TextMeshProUGUI>().text = "You win! Go back to bed and get a good night's sleep!";
+                string currentSceneString = SceneManager.GetActiveScene().name;
+                print("currentScene: " + currentSceneString);
+                if (currentSceneString == "TutorialLevel")
+                {
+                    playLevel2Button.gameObject.SetActive(true);
+                }
                 break;
             default:
                 break;
